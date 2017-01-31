@@ -1,5 +1,20 @@
 %% Configurações de aparência do PDF final
 
+% ---
+% Configurações do pacote backref
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1
+		Nenhuma citação no texto.
+	\or
+		Citado na página #2.
+	\else
+		Citado #1 vezes nas páginas #2.
+	\fi}
+% ---
+
 %% Cor Azul dos Links do PDF
 %\definecolor{blue}{RGB}{8,40,75}
 \definecolor{blue}{RGB}{0,0,0}
