@@ -1,0 +1,43 @@
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+\postextual
+
+%% Referências bibliográficas
+\bibliography{bibliografia}
+
+% ----------------------------------------------------------
+% Glossário
+% ----------------------------------------------------------
+%
+% Há diversas soluções prontas para glossário em LaTeX. 
+% Consulte o manual do abnTeX2 para obter sugestões.
+%
+%\glossary
+
+% ----------------------------------------------------------
+% Apêndices
+% ----------------------------------------------------------
+
+% ---
+% Inicia os apêndices
+% ---
+%\begin{apendicesenv}
+
+% ----------------------------------------------------------
+%\chapter{Nullam elementum urna vel imperdiet sodales elit ipsum pharetra ligula
+%ac pretium ante justo a nulla curabitur tristique arcu eu metus}
+% ----------------------------------------------------------
+%\lipsum[55-57]
+
+%\end{apendicesenv}
+% ---
+
+%% Anexos
+\cftinserthook{toc}{AAA}
+\begin{anexosenv}
+
+\chapter{Primeiro Anexo do Documento}
+Aqui fica o conteúdo do anexo
+
+\end{anexosenv}

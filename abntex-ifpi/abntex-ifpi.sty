@@ -1,0 +1,198 @@
+%%
+%% Customizações do abnTeX2 para o IFPI
+%% - Com base em customizações feitas pela Universidade Federal do Ceará
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%%
+%% The Current Maintainer of this work is Rafael M. Lins, rafael.lins777@gmail.com
+%% (maintainer of the original: Luan Falcão Daniel Santos, luan_aero@yahoo.com.br)
+%%
+%% Further information about abnTeX2 are available on http://abntex2.googlecode.com/
+%%
+
+% ----------------------------------------------------------
+% Normalização de fontes e tamanhos
+%
+% Retirado de: https://github.com/marbutto/tcc/blob/master/tcc.cls
+% Autor: Matheus Liberatos, matheusliberatosbs@gmail.com
+% ----------------------------------------------------------
+%\renewcommand{\ABNTEXchapterfont}{\sffamily}
+\renewcommand{\ABNTEXchapterfont}{}
+\renewcommand{\ABNTEXchapterfontsize}{\normalsize\bfseries}
+\renewcommand{\ABNTEXpartfont}{\ABNTEXchapterfont}
+\renewcommand{\ABNTEXpartfontsize}{\ABNTEXchapterfontsize}
+\renewcommand{\ABNTEXsectionfont}{\ABNTEXchapterfont}
+\renewcommand{\ABNTEXsectionfontsize}{\normalsize\bfseries}
+\renewcommand{\ABNTEXsubsectionfont}{\ABNTEXsectionfont}
+\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize\bfseries}
+\renewcommand{\ABNTEXsubsubsectionfont}{\ABNTEXsubsectionfont}
+\renewcommand{\ABNTEXsubsubsectionfontsize}{\normalsize\bfseries}
+\renewcommand{\ABNTEXsubsubsubsectionfont}{\ABNTEXsubsectionfont}
+\renewcommand{\ABNTEXsubsubsubsectionfontsize}{\normalsize\bfseries}
+
+% ----------------------------------------------------------
+% Normalização de fontes e tamanhos no Sumário, Seções, etc.
+% ----------------------------------------------------------
+\renewcommand{\cftsectionfont}{\bfseries}
+\renewcommand{\cftsectionpagefont}{\cftsectionfont}
+\renewcommand{\cftsubsectionfont}{\normalsize}
+\renewcommand{\cftsubsectionpagefont}{\cftsectionfont}
+\renewcommand{\cftsubsubsectionfont}{\normalsize}
+\renewcommand{\cftsubsubsectionpagefont}{\cftsectionfont}
+\renewcommand{\cftparagraphfont}{\normalsize}
+\renewcommand{\cftparagraphpagefont}{\cftsectionfont}
+\renewcommand{\cftsectionfont}{}						% Tira o negrito das seções no sumário.
+\renewcommand{\cftsectionpagefont}{\cftsectionfont}		% Tira o negrito das seções no sumário.
+
+
+
+% ----------------------------------------------------------
+% Pacotes Utilizados
+% ----------------------------------------------------------
+\usepackage{float}
+\usepackage{graphicx}
+
+% ----------------------------------------------------------
+% Comandos Novos para os Membros da Banca
+% Utilize \membroum{Nome} e \membrodois{Nome} para configurar
+% ----------------------------------------------------------
+\newcommand{\membroumname}{Primeiro membro}
+\newcommand{\membrodoisname}{Segundo membro}
+
+% Comandos de dados - Membro da banca um
+\providecommand{\imprimirmembroumRotulo}{}
+\providecommand{\imprimirmembroum}{}
+\newcommand{\membroum}[2][\membroumname]
+  {\renewcommand{\imprimirmembroumRotulo}{#1}
+   \renewcommand{\imprimirmembroum}{#2}}
+   
+% Comandos de dados - Membro da banca dois
+\providecommand{\imprimirmembrodoisRotulo}{}
+\providecommand{\imprimirmembrodois}{}
+\newcommand{\membrodois}[2][\membrodoisname]
+  {\renewcommand{\imprimirmembrodoisRotulo}{#1}
+   \renewcommand{\imprimirmembrodois}{#2}}
+
+% ----------------------------------------------------------
+% Alterações da Capa (inclusão do Brasão)
+% ----------------------------------------------------------
+\renewcommand{\imprimircapa}{
+  \begin{capa}
+    \center
+    
+    % Brasão (mude a escala para diminuir/aumentar)
+    \begin{figure}[H]
+      \centering
+      \includegraphics[scale=0.12]{abntex-ifpi/brasao-brasil.pdf}
+    \end{figure}
+    
+    % Nome da Instituição
+    {\ABNTEXchapterfont\bfseries{\uppercase{\imprimirinstituicao}\vspace*{3.5cm}}}
+	
+    % Autor do Trabalho
+    {\ABNTEXchapterfont\bfseries\uppercase{\imprimirautor}\vspace*{3.5cm}}
+    	
+    % Título do Trabalho
+    {\ABNTEXchapterfont\bfseries\uppercase{\imprimirtitulo}}
+    \vspace*{\fill}
+	
+    % Local e Ano
+    {\bfseries\imprimirlocal}
+    \par
+    {\bfseries\imprimirdata}
+
+    \vspace*{1cm}
+  \end{capa}
+}
+
+
+% ----------------------------------------------------------
+% Folha de Rosto (contracapa)
+% ----------------------------------------------------------
+\makeatletter
+
+\renewcommand{\folhaderostocontent}{
+\begin{center}
+  {\ABNTEXchapterfont\uppercase{\imprimirautor}}
+
+  \vspace*{3.5cm}
+
+  {\ABNTEXchapterfont\uppercase{\imprimirtitulo}}
+
+  \vspace*{\fill}
+
+  \abntex@ifnotempty{\imprimirpreambulo}{
+    \hspace{.45\textwidth}
+    \begin{minipage}{.5\textwidth}
+    \SingleSpacing
+    \imprimirpreambulo
+    \end{minipage}
+  }
+
+  \abntex@ifnotempty{\imprimirorientador}{
+    \hspace{.45\textwidth}
+    \begin{minipage}{.5\textwidth}
+    \SingleSpacing
+    \textbf{Orientador:} \imprimirorientador
+    \end{minipage}
+    \vspace*{\fill}
+  }
+
+  \vspace*{\fill}
+  {\imprimirlocal}
+  \par
+  {\imprimirdata}
+  \vspace*{1cm}
+\end{center}
+}
+
+\makeatother
+
+% ----------------------------------------------------------
+% Folha de Aprovação
+% ----------------------------------------------------------
+\newcommand{\imprimirfolhadeaprovacao}{
+\begin{folhadeaprovacao}
+  \begin{center}
+    {\ABNTEXchapterfont\uppercase{\imprimirautor}}
+    \vspace*{\fill}
+
+    \vspace*{\fill}
+    {\ABNTEXchapterfont\uppercase{\imprimirtitulo}}
+    \vspace*{\fill}
+
+    \hspace{.45\textwidth}
+    \begin{minipage}{.5\textwidth}
+      \imprimirpreambulo
+    \end{minipage}
+    \vspace*{\fill}
+  \end{center}
+
+  Aprovado em
+
+  \begin{center}
+  	Banca Examinadora
+  \end{center}
+
+  \assinatura{\textbf{Orientador} \\ \textbf{\imprimirorientador} \\ Instituto Federal de Educação, Ciência e Tecnologia do Piauí - IFPI}
+  \assinatura{\textbf{1\textsuperscript{o} Examinador} \\ \textbf{\imprimirmembroum} \\ Instituto Federal de Educação, Ciência e Tecnologia do Piauí - IFPI}
+  \assinatura{\textbf{2\textsuperscript{o} Examinador} \\ \textbf{\imprimirmembrodois} \\ Instituto Federal de Educação, Ciência e Tecnologia do Piauí - IFPI}
+
+  \begin{center}
+    \vspace*{\fill}
+    {\imprimirlocal}
+    \par
+    {\imprimirdata}
+    \vspace*{1cm}
+  \end{center}
+
+\end{folhadeaprovacao}
+}

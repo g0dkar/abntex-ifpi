@@ -1,0 +1,63 @@
+%% Capa, contracapa, etc. na ordem da ABNT
+
+%% Capa
+\imprimircapa
+
+
+
+%% Contracapa
+\imprimirfolhaderosto
+
+
+
+%% Ficha Catalográfica (acho que é melhor adicionar via \includepdf depois)
+\input{este-trabalho/ficha-catalografica}
+
+
+
+%% Folha de Aprovação
+\imprimirfolhadeaprovacao
+
+
+
+%% Dedicatória
+\input{este-trabalho/dedicatoria}
+
+
+
+%% Agradecimentos
+\input{este-trabalho/agradecimentos}
+
+
+
+%% Epígrafe
+\input{este-trabalho/epigrafe}
+
+
+
+%% Resumo e Abstract
+\input{este-trabalho/resumo-abstract}
+
+
+
+%% Lista de Ilustrações
+\pdfbookmark[0]{\listfigurename}{lof}
+\listoffigures*
+\cleardoublepage
+
+
+
+%% Lista de Tabelas
+\pdfbookmark[0]{\listtablename}{lot}
+\listoftables*
+\cleardoublepage
+
+
+
+%% Lista de Siglas
+\input{este-trabalho/siglas}
+
+
+
+%% Sumário
+\tableofcontents
