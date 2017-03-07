@@ -59,6 +59,13 @@
 % ----------------------------------------------------------
 \usepackage{float}
 \usepackage{graphicx}
+\usepackage[many]{tcolorbox}
+\usepackage{amsthm}
+
+% ----------------------------------------------------------
+% Ajuda a criar "caixas"
+% ----------------------------------------------------------
+\newtcbtheorem[]{caixa}{Quadro}{outer arc=0pt,arc=0pt,colframe = cor-quadro,colback = cor-quadro!10}{tha}
 
 % ----------------------------------------------------------
 % Comando para "corrigir" listas
@@ -66,6 +73,11 @@
 \newlist{lista}{itemize}{2}
 \setlist[lista,1]{label={$\bullet$},topsep=0pt,itemsep=0pt,leftmargin=\parindent+\labelwidth-\labelsep}
 \setlist[lista,2]{label={$\circ$},topsep=0pt,itemsep=0pt,leftmargin=*}
+
+% ----------------------------------------------------------
+% Comando de formatação de texto para código-fonte inline
+% ----------------------------------------------------------
+\newcommand{\codigo}{\texttt}
 
 % ----------------------------------------------------------
 % Comandos Novos para os Membros da Banca

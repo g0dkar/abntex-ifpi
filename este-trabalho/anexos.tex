@@ -1,0 +1,74 @@
+%% Anexos
+\begin{anexosenv}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Anexo A
+\chapter{Código fonte da Aplicação} \label{anexo:a}
+O código-fonte da aplicação se encontra publicamente disponível sob licença MIT em \\
+https://github.com/g0dkar/ajuda-ai
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Anexo B
+\chapter{Especificação de Casos de Uso} \label{anexo:b}
+
+\section*{Especificação do Caso de Uso 01 --- Doação}
+\subsection*{Objetivo}
+Este documento tem por objetivo descrever todos os fluxos envolvidos no Caso de Uso 01 - Doação. São listados e detalhados todos os atores, fluxos, requisitos funcionais e não-funcionais.
+
+\subsection*{Identificação dos Atores}
+Esta secção lista e descreve todos os atores envolvidos nos fluxos que compõem o Caso de Uso 01 - Doação.
+\begin{lista}
+  \item \textbf{Usuário}: Qualquer pessoa que utiliza o Ajuda.Ai;
+  \item \textbf{Cliente}: Interface através da qual o Usuário utiliza o Ajuda.Ai.
+\end{lista}
+
+\subsection*{Identificação dos Fluxos}
+Esta seção lista e descreve todos os fluxos que compõem o caso de uso.
+\begin{lista}
+  \item \textbf{Efetuar Doação}: Este fluxo descreve como se dá a efetuação de uma doação a uma Instituição.
+\end{lista}
+
+\subsection*{Detalhamento dos Fluxos}
+\begin{lista}
+  \item \textbf{Efetuar Doação}: Este fluxo especifica a ação de efetuar uma doação a uma Instituição. O usuário fornece dados ao cliente o qual, junto ao sistema, faz uma ordem de pagamento junto ao \emph{Gateway} configurado para a Instituição.
+    \begin{itemize}
+    \item \textbf{Atores}: Usuário, Cliente;
+    \item \textbf{Pré-Condições}: Nenhuma;
+    \item \textbf{Pós-Condições}: Nenhuma;
+    \item \textbf{Requisitos Funcionais}: O sistema deve prover uma interface para execução da doação.
+    \end{itemize}
+	
+    \textbf{Fluxo Básico}
+    \begin{enumerate}
+    \item O ator Cliente mostra ao ator Usuário informações sobre uma Instituição;
+    \item O Usuário decide efetuar uma doação a Instituição;
+    \item O Cliente solicita os dados para doação: Valor, Se o nome de quem está doando pode ou não ser publicado, Se os custos operacionais do \emph{Gateway} devem ser embutidos no valor da doação, E-mail e Nome;
+    \item O Usuário informa os dados solicitados;
+    \item O Cliente envia os dados ao Sistema;
+    \item O Sistema valida os dados;
+    \item O Sistema registra a ordem de pagamento no SGBD;
+    \item O Sistema retorna ao Cliente os dados do pagamento a ser efetuado pelo Usuário;
+    \item O Cliente direciona o Usuário ao \emph{Gateway} para continuar o processo de pagamento;
+    \item O caso de uso se encerra.
+    \end{enumerate}
+    
+    \textbf{Fluxo Alternativo A} \\
+    No Passo 5, caso exista algum erro de comunicação entre Cliente e Sistema:
+    \begin{enumerate}
+    \item Uma mensagem de erro é exibida ao Usuário informando da falha;
+    \item O fluxo retorna ao passo 1.
+    \end{enumerate}
+    
+    \textbf{Fluxo Alternativo B} \\
+    No Passo 6, caso exista algum erro de validação das entradas:
+    \begin{enumerate}
+    \item Todos os erros de validação encontrados são retornados ao Cliente;
+    \item O fluxo retorna ao passo 1.
+    \end{enumerate}
+\end{lista}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{anexosenv}

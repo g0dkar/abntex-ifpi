@@ -15,9 +15,15 @@
 	\fi}
 % ---
 
-%% Cor Azul dos Links do PDF
-%\definecolor{blue}{RGB}{8,40,75}
-\definecolor{blue}{RGB}{0,0,0}
+%% Cor dos Links do PDF
+%% Esta é a cor azul:
+%\definecolor{cor-link}{RGB}{8,40,75}
+%% Esta é a cor preta ("esconde" os links)
+\definecolor{cor-link}{RGB}{0,0,0}
+
+%% Cor para os quadros, se usar. Dê preferência a cores escuras.
+%% Boa referência para cores: https://material.io/guidelines/style/color.html#color-color-palette
+\definecolor{cor-quadro}{RGB}{5,28,63}
 
 %% informações do PDF
 \makeatletter
@@ -28,10 +34,10 @@
   pdfcreator={Overleaf, LaTeX, abnTeX2},
   pdfkeywords={financiamento coletivo}{empreendimento social}{crowdfunding}{impacto social}{social impact}{social entrepreneurship},
   colorlinks=true,							% Visual dos Links: false = caixas; true = colorido
-  linkcolor=blue,							% Cor dos Links Internos (preto)
-  citecolor=blue,							% Cor de Links para Bibliografia (preto)
-  filecolor=blue,							% Cor para Links a Arquivos (preto)
-  urlcolor=blue,							% Cor para Links a URLs (preto)
+  linkcolor=cor-link,							% Cor dos Links Internos (preto)
+  citecolor=cor-link,							% Cor de Links para Bibliografia (preto)
+  filecolor=cor-link,							% Cor para Links a Arquivos (preto)
+  urlcolor=cor-link,							% Cor para Links a URLs (preto)
   bookmarksdepth=4
 }
 \makeatother

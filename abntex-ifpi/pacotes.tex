@@ -1,34 +1,56 @@
-% ---
-% PACOTES
-% ---
+%% ---
+%% PACOTES
+%% ---
 
-% ---
-% Pacotes fundamentais 
-% ---
-%\usepackage{lmodern}					% Usa a fonte Latin Modern (mais clássica)
-\usepackage{mathptmx}					% Usa a fonte Times New Roman (requerida pelo IFPI)
-\usepackage[T1]{fontenc}				% Selecao de codigos de fonte.
-\usepackage[utf8]{inputenc}				% Codificacao do documento (conversão automática dos acentos)
+%% Fontes
+%% AVISO: Todas essas fontes são *bastante semelhantes* aos nomes com as quais as descrevo. Entenda: são iguais, só que oficialmente com outro nome.
+
+%% Latin Modern (fonte padrão do LaTeX, Computer Modern, mas com suporte a caracteres acentuados)
+%% Considerada a mais clássica e bonita
+%\usepackage{lmodern}
+
+%% Times
+%% Considerada a mais confortável de ler quando impresso
+\usepackage{mathptmx}
+%% Variação da mesma fonte, com minúsculas diferenças entre uma e outra (coisas bastante técnicas como kerning, aliasing e afins) - Essa tem revisões frequentes
+%\usepackage{newtxtext} \usepackage{newtxmath}
+
+%% Arial
+%% Considerada mais confortável de ler num computador
+%% Oficialmente recomendada pelo manual de formatação do IFPI
+%\usepackage{helvet} \renewcommand{\familydefault}{\sfdefault}
+
+%% Palatino
+%% Uma opção mais elegante à Times
+%\usepackage{newpxtext}
+
+%% Kepler
+%% Variação evoluída da Palatino, com várias pequenas diferenças e refinamentos
+%\usepackage{kpfonts}
+
+%% Libertine
+%% Uma fonte estilo Serif comum no Linux
+%\usepackage{libertine} %\usepackage[libertine]{newtxmath}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{courier}                    % Permite a utilização da fonte Courier (para códigos-fonte)
+\usepackage[T1]{fontenc}				% Seleção de códigos de fonte.
+\usepackage[utf8]{inputenc}				% Codificação do documento (conversão automática dos acentos)
 \usepackage{indentfirst}				% Indenta o primeiro parágrafo de cada seção.
-\usepackage{nomencl} 					% Lista de simbolos
+\usepackage{nomencl} 					% Lista de símbolos
 \usepackage{color}						% Controle das cores
 \usepackage{graphicx}					% Inclusão de gráficos
+\usepackage{float}						% Melhorias para posicionamento de imagens e tabelas
 \usepackage{microtype} 					% para melhorias de justificação
 \usepackage{lastpage}   		        % Dá acesso ao número da última página do documento
 \usepackage{booktabs}					% Comandos para tabelas
 \usepackage{verbatim}					% Texto é interpretado como escrito no documento
 \usepackage{multirow, array}			% Múltiplas linhas e colunas em tabelas
-\usepackage[hyphenbreaks]{breakurl}
+\usepackage[hyphenbreaks]{breakurl}		% Hifenação para URLs no texto
 \usepackage[table,xcdraw]{xcolor}       % Cores para algumas tabelas especiais
-\usepackage[num]{abntex2cite}			% Citações numéricas
+\usepackage[num]{abntex2cite}				% Citações numéricas
 \citebrackets[]							% Coloca os números entre colchetes ao invés de parenteses
 \usepackage{abntex-ifpi/abntex-ifpi}	% Modificações do ABNTeX para o IFPI
 \usepackage{abntex-ifpi/tikz-uml}	    % Pacote Tikz UML para criar UML no LaTeX
-% ---
-		
-% ---
-% Pacotes de citações
-% ---
 \usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibliografia
-%\usepackage[alf]{abntex2cite}	                 % Citações padrão ABNT
-% ---
