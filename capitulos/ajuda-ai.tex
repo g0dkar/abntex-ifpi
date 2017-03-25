@@ -3,7 +3,9 @@
 % ----------------------------------------------------------
 \chapter{Ajuda.Ai} \label{cha:ajudaai}
 
-O projeto Ajuda.Ai é um software de código fonte aberto que visa ajudar instituições a arrecadar doações através da internet e aos usuários a doarem para instituições de forma simples, semelhante a adquirir um produto numa loja online, estar bem integrado junto a plataformas de redes sociais e unir doadores e instituições. O projeto apresentado foi construído com uma interface para ser acessada pelo navegador através de uma aplicação web de página única (\emph{Single Page Application}), apesar de dar suporte a outros tipos de interface, e no lado do servidor uma aplicação Java em um servidor de aplicação RedHat WildFly 10.
+O projeto Ajuda.Ai é um software de código-fonte aberto que visa ajudar instituições a arrecadar doações através da internet e aos usuários a doarem para instituições de forma simples, semelhante a adquirir um produto numa loja online, ter uma boa integração junto a plataformas de redes sociais e unir doadores e instituições. O projeto apresentado foi construído com uma interface para ser acessada pelo navegador através de uma aplicação web de página única (\emph{Single Page Application}), além de contar com uma API que dá suporte a outros tipos de interface, e no lado do servidor uma aplicação Java em um servidor de aplicação RedHat WildFly 10.
+
+O código-fonte da ferramenta está disponível sob licença MIT no endereço \\ https://github.com/g0dkar/ajuda-ai e está publicada no endereço https://ajuda.ai. A API pode ser acessada através do \emph{endpoint} https://api.ajuda.ai/v1. Apesar da ferramenta estar pronta para uso, por hora nenhuma instituição real está sendo contemplada, mas duas instituições reais encontram-se cadastradas apenas para testes. Elas serão as primeiras a serem contactadas para iniciarem o uso do Ajuda.Ai. A divulgação da ferramenta será feita inicialmente através de contato direto com as Instituições e através de redes sociais. Futuramente, publicidades digitais podem ser uma opção viável para ajudar a trazer mais doadores e novas instituições ao Ajuda.Ai.
 
 
 
@@ -25,7 +27,7 @@ As especificações dos casos de uso estão disponíveis no Anexo \ref{anexo:b} 
 \begin{figure}[H]
   \caption{\label{fig:uml_caso_uso}Diagrama UML de Casos de Uso do Ajuda.Ai}
   \centering
-  \includegraphics[scale=0.46]{imagens/uml-casos-de-uso.pdf}
+  \includegraphics[scale=0.4]{imagens/uml-casos-de-uso-02.pdf}
   \legend{Fonte: Elaborado pelo Autor}
 \end{figure}
 
@@ -52,7 +54,7 @@ Por fim, senhas são criptografadas no banco de dados se utilizando do algoritmo
 \section{Apresentação da Aplicação} \label{sec:ajudaai:apresentacao}
 %\textbf{\textit{Aqui será apresentado screenshots e essas coisas. Ainda não sei exatamente de que maneira ou que texto escrever para apresentar as figuras. Talvez um run-down do processo de doação?}}
 
-Nesta sessão será apresentada de forma ilustrada a solução desenvolvida neste trabalho. Parte do projeto visual, cores e detalhes estéticos são de autoria de Cândido Sales Gomes. A Figura \ref{fig:ss_ajudaai_01} apresenta a página inicial do projeto Ajuda.Ai. Nela temos um painel rotativo informativo com âncoras para páginas informativas sobre o projeto, uma lista mesclada entre instituições mais recentemente cadastradas no projeto e outras escolhidas aleatoriamente e uma seção com um pequeno mapa de âncoras para todas as páginas informativas do projeto.
+Nesta seção será apresentada de forma ilustrada a solução desenvolvida neste trabalho. Parte do projeto visual, cores e detalhes estéticos são de autoria de Cândido Sales Gomes. A Figura \ref{fig:ss_ajudaai_01} apresenta a página inicial do projeto Ajuda.Ai. Nela temos um painel rotativo informativo com âncoras para páginas informativas sobre o projeto, uma lista mesclada entre instituições mais recentemente cadastradas no projeto e outras escolhidas aleatoriamente e uma seção com um pequeno mapa de âncoras para todas as páginas informativas do projeto.
 
 \begin{figure}[H]
 	\caption{\label{fig:ss_ajudaai_01}Captura de Tela da Página Inicial do Projeto Ajuda.Ai}
@@ -63,7 +65,7 @@ Nesta sessão será apresentada de forma ilustrada a solução desenvolvida nest
 
 A estrutura das páginas segue em grande parte a mesma estrutura visual na Figura \ref{fig:ss_ajudaai_01}: uma barra de navegação de posicionamento fixo no topo da tela, um painel com uma grande figura e uma frase de cabeçalho, o conteúdo da página atual e o rodapé.
 
-Na Figura \ref{fig:ss_ajudaai_02} é apresentada uma página interna, especificamente a página ``Sobre'', que fala em linhas gerais sobre o projeto. Este mesmo modelo é utilizado para todas as páginas internas, representadas pela entidade \codigo{Page}, apresentada na seção \ref{sec:ajudaai:organizacao}.
+Na Figura \ref{fig:ss_ajudaai_02} é apresentada uma página interna, especificamente a página ``Sobre'', que fala em linhas gerais sobre o projeto. Esse mesmo modelo é utilizado para todas as páginas internas, representadas pela entidade \codigo{Page}, apresentada na seção \ref{sec:ajudaai:organizacao}.
 
 \begin{figure}[H]
 	\caption{\label{fig:ss_ajudaai_02}Captura de Tela da Página Sobre do Projeto Ajuda.Ai}
@@ -92,7 +94,7 @@ Por segurança, a página também inclui um teste CAPTCHA do serviço Google reC
     \legend{Fonte: Elaborado pelo Autor}
 \end{figure}
 
-Esta interface com o usuário através de uma folha de estilos CSS adequada pode se adaptar ao dispositivo onde a página está sendo exibida. Nas Figuras \ref{fig:ss_ajudaai_05} e \ref{fig:ss_ajudaai_06} temos duas capturas de tela mostrando como a interface se adapta quando exibida em um telefone celular.
+Essa interface com o usuário através de uma folha de estilos CSS adequada pode se adaptar ao dispositivo onde a página está sendo exibida. Nas Figuras \ref{fig:ss_ajudaai_05} e \ref{fig:ss_ajudaai_06} temos duas capturas de tela mostrando como a interface se adapta quando exibida em um telefone celular.
 
 \begin{figure}[H]
  \centering
@@ -113,9 +115,9 @@ Esta interface com o usuário através de uma folha de estilos CSS adequada pode
   \end{minipage}
 \end{figure}
 
-Esta capacidade é uma das melhores práticas recomendadas pela indústria, pois melhora a gama de usuários que terão acesso adequado à página. Esse aspecto é importante para o Ajuda.Ai devido sua proposta de ser um meio de acesso a uma grande comunidade de pessoas, através de redes sociais, e o crescimento da quantidade de dispositivos móveis no Brasil e do acesso a Internet através destes dispositivos.
+Essa capacidade é uma das melhores práticas recomendadas pela indústria, pois melhora a gama de usuários que terão acesso adequado à página. Esse aspecto é importante para o Ajuda.Ai devido a sua proposta de ser um meio de acesso a uma grande comunidade de pessoas, através de redes sociais, e ao crescimento da quantidade de dispositivos móveis no Brasil e do acesso a Internet através destes dispositivos.
 
-Na Figura \ref{fig:ss_ajudaai_07} temos a tela de Login do usuário. O acesso a área administrativa pode ser feito através do nome de usuário escolhido ao se registrar ou e-mail. As senhas, como explicado na seção \ref{sec:ajudaai:caracteristicas}, são criptografadas com BCrypt e, como consequência, são conhecidas apenas pelos seus donos. Nesta mesma tela, caso o usuário tenha esquecido sua senha, é possível se utilizar o link ``Esqueci minha senha'' para que, usando o nome de usuário ou e-mail preenchido, um e-mail com instruções para reinicialização de senha será enviado para o usuário, a partir do qual ele poderá criar uma nova senha.
+Na Figura \ref{fig:ss_ajudaai_07} temos a tela de Login do usuário. O acesso a área administrativa pode ser feito através do nome de usuário escolhido ao se registrar ou e-mail. As senhas, como explicado na seção \ref{sec:ajudaai:caracteristicas}, são criptografadas com BCrypt e, como consequência, são conhecidas apenas pelos seus donos. Na mesma tela, caso o usuário tenha esquecido sua senha, é possível se utilizar o link ``Esqueci minha senha'' para que, usando o nome de usuário ou e-mail preenchido, um e-mail com instruções para reinicialização de senha será enviado para o usuário, a partir do qual ele poderá criar uma nova senha.
 
 \begin{figure}[H]
 	\caption{\label{fig:ss_ajudaai_07}Captura de Tela de Login do Ajuda.Ai}
@@ -124,7 +126,7 @@ Na Figura \ref{fig:ss_ajudaai_07} temos a tela de Login do usuário. O acesso a 
     \legend{Fonte: Elaborado pelo Autor}
 \end{figure}
 
-Após o \emph{login}, na Figura \ref{fig:ss_ajudaai_08}, um \emph{dashboard} com informações relevantes são mostradas ao usuário: Suas últimas doações, total doado, quantidade de instituições ajudadas, média do valor das doações, últimas notícias das instituições ajudadas e quais as últimas doações feitas. Essa tela é, também, o que é exibido quando o usuário utiliza o link ``Minhas Doações'' do menu principal.
+Após o \emph{login}, na Figura \ref{fig:ss_ajudaai_08}, um \emph{dashboard} com informações relevantes são mostradas ao usuário: Suas últimas doações, total doado, quantidade de instituições ajudadas, média do valor das doações, últimas notícias das instituições ajudadas e quais as últimas doações feitas. Essa tela é também o que é exibido quando o usuário utiliza o link ``Minhas Doações'' do menu principal.
 
 \begin{figure}[H]
 	\caption{\label{fig:ss_ajudaai_08}Captura do \emph{Dashboard} de Doações, com dados de exemplo}
@@ -274,7 +276,7 @@ O modelo de dados da aplicação é apresentado na Figura \ref{fig:uml_model}, o
   \legend{Fonte: Elaborado pelo Autor}
 \end{figure}
 
-As principais classes do sistema são \codigo{Instituion}, \codigo{Payment} e \codigo{PaymentEvent}. A primeira representa as Instituições cadastradas no sistema, as quais receberão doações de usuários, representados por \codigo{User}. Essas doações são representadas internamente como objetos \codigo{Payment} os quais abstraem de forma unificada pagamentos feitos através de diferentes \emph{Gateways} de Pagamento. Por fim, o andamento do pagamento junto ao \emph{Gateway} é informado através de notificações, como explicado em \ref{sec:ajudaai:processo_pagamento}, e essas notificações são, então, abstraídas como objetos \codigo{PaymentEvent} vinculados a um \codigo{Payment}.
+As principais classes do sistema são \codigo{Instituion}, \codigo{Payment} e \codigo{PaymentEvent}. A primeira representa as Instituições cadastradas no sistema, as quais receberão doações de usuários, representados por \codigo{User}. Essas doações são representadas internamente como objetos \codigo{Payment} os quais abstraem de forma unificada pagamentos feitos através de diferentes \emph{Gateways} de Pagamento. Por fim, o andamento do pagamento junto ao \emph{Gateway} é informado através de notificações, como explicado em \ref{sec:ajudaai:processo_pagamento}, e essas notificações são então abstraídas como objetos \codigo{PaymentEvent} vinculados a um \codigo{Payment}.
 
 
 
@@ -284,9 +286,9 @@ As principais classes do sistema são \codigo{Instituion}, \codigo{Payment} e \c
 
 \section{Arquitetura} \label{sec:ajudaai:arquitetura}
 
-Como arquitetura do sistema se escolheu uma arquitetura REST Web onde o \emph{Back End} é totalmente separado do \emph{Front End}. Dessa forma o \emph{Back End} preocupa-se apenas em atender requisições menores e que envolvem dados e regra de negócio e o \emph{Front End} preocupa-se apenas com a exibição de informações e a interação com o usuário. Dessa forma se permite que seja feita uma separação completa entre \emph{Front End} e \emph{Back End}. Assim a interface com o usuário pode ser feita se utilizando um navegador e HTML5 ou um aplicativo para plataformas móveis como Google Android e Apple iOS.
+Como arquitetura do sistema se escolheu uma arquitetura REST Web onde o \emph{Back End} é totalmente separado do \emph{Front End}. Dessa forma, o \emph{Back End} preocupa-se apenas em atender requisições menores e que envolvem dados e regra de negócio e o \emph{Front End} preocupa-se apenas com a exibição de informações e a interação com o usuário. Assim, permite-se que seja feita uma separação completa entre \emph{Front End} e \emph{Back End} e a interface com o usuário pode ser feita se utilizando um navegador e HTML5 ou um aplicativo para plataformas móveis como Google Android e Apple iOS.
 
-A Figura \ref{fig:arquitetura} ilustra a arquitetura do Ajuda.Ai, que utiliza uma arquitetura REST Web, arquitetura recomendada para aplicações web pela W3C\footnote{\emph{World Wide Web Consortium}, consórcio de empresas e profissionais que buscam padronizar a WWW} em \cite{booth2004webservices}. Nessa especificação REST Web é definido como ``um subconjunto da WWW (baseado em HTTP) onde agentes provêm semânticas uniformes para interfaces ao contrário de interfaces arbitrárias ou específicas de uma aplicação, e manipulam recursos apenas pela troca de representações.''
+A Figura \ref{fig:arquitetura} ilustra a arquitetura do Ajuda.Ai, que utiliza uma arquitetura REST Web, arquitetura recomendada para aplicações web pela W3C\footnote{\emph{World Wide Web Consortium}, consórcio de empresas e profissionais que buscam padronizar a WWW} em \cite{booth2004webservices}. Nessa especificação, REST Web é definido como um subconjuntos da WWW, baseado em HTTP, onde o servidor provê uma interface e semântica uniforme para as aplicações, sem impor uma interface específica. Além disso, todas as ações são tomadas através do que se chama de troca de representações de estado, ou seja, a entrada são objetos que representam uma requisição e a saída são objetos que representam uma resposta.
 
 \begin{figure}[H]
   \caption{\label{fig:arquitetura}Arquitetura do Ajuda.Ai}
@@ -351,7 +353,7 @@ O Ajuda.Ai se utiliza da segunda forma demonstrada, o \emph{Check-Out} Clássico
 A ilustração da Figura \ref{fig:gateway} mostra o fluxo de criação e processamento de pagamento comum a maioria dos \emph{gateways} atualmente no mercado. Todo o processo acontece entre duas entidades que são o Sistema, que é o sistema que irá gerar as ordens de pagamento e ser notificado do andamento dos pagamentos, e o próprio \emph{Gateway} de Pagamento. O processo começa com a geração de uma ordem de pagamento junto ao \emph{gateway}, a qual pode ser feita de duas maneiras:
 
 \begin{lista}
-	\item \textbf{Pagamento Normal}: Nessa modalidade o Sistema faz um HTTP POST com dados sobre o que está sendo comprado ao \emph{Gateway} e o usuário é redirecionado até uma página do próprio \emph{Gateway} de pagamento. Esse é o modo recomendado pelos \emph{Gateways}, pois os \emph{Gateways} podem servir a página de forma segura, protegida através de certificados digitais confiáveis, com uma interface de usuário adequada. Segundo os \emph{Gateways}, os clientes ficam mais propensos a concluir a compra quando o pagamento utiliza esse formato, pois os mesmos confiam na marca do \emph{Gateway} e na segurança do ambiente;
+	\item \textbf{Pagamento Normal}: Nessa modalidade, o Sistema faz um HTTP POST com dados sobre o que está sendo comprado ao \emph{Gateway} e o usuário é redirecionado até uma página do próprio \emph{Gateway} de pagamento. Esse é o modo recomendado pelos \emph{Gateways}, pois os \emph{Gateways} podem servir a página de forma segura, protegida através de certificados digitais confiáveis, com uma interface de usuário adequada. Segundo os \emph{Gateways}, os clientes ficam mais propensos a concluir a compra quando o pagamento utiliza esse formato, pois os mesmos confiam na marca do \emph{Gateway} e na segurança do ambiente;
 	\item \textbf{Pagamento Transparente}: Nessa modalidade, todos os dados do pagamento são preenchidos em uma interface provida pelo próprio Sistema e enviados de forma segura ao \emph{Gateway} de Pagamento, o qual imediatamente cria e inicia o processamento do pagamento da uma ordem de pagamento.
 \end{lista}
 
@@ -381,7 +383,7 @@ A cada alteração de estado do pagamento uma requisição específica a URL con
 
 Uma vez criado um pagamento junto ao \emph{gateway} ele deve ser confirmado. Esse estado é mais evidente quando o pagamento é feito por Boleto Bancário, pois o mesmo demora até 3 dias úteis para ser processado pelo banco e o retorno dado ao \emph{gateway}. Em pagamentos via cartão de crédito a confirmação é simplesmente o recebimento da requisição de crédito através dos sistemas da mesma, o que quase sempre é imediato.
 
-Na confirmação o \emph{gateway} é informado do sucesso ou falha na execução do pagamento. Caso o pagamento não tenha sido feito, ele vai para o estado Recusado, caso contrário Finalizado. Como explicitado na Figura \ref{fig:gateway}, a praticamente qualquer momento do processo o usuário poderá Cancelar o pagamento. Apenas após 30 dias no estado Finalizado, o pagamento que o cancelamento da operação fica indisponível, entretanto este prazo pode mudar de acordo com o \emph{gateway}. Vale salientar também, que apenas após este prazo o dinheiro estará disponível para resgate pela instituição.
+Na confirmação o \emph{gateway} é informado do sucesso ou falha na execução do pagamento. Caso o pagamento tenha sido feito sem problemas, ele vai para o estado Finalizado, vai para Recusado. Como explicitado na Figura \ref{fig:gateway}, a praticamente qualquer momento do processo o usuário poderá Cancelar o pagamento. Apenas após 30 dias no estado Finalizado, o cancelamento da operação fica indisponível, entretanto este prazo pode mudar de acordo com o \emph{gateway}. Vale salientar também, que apenas após este prazo o dinheiro estará disponível para resgate pela instituição.
 
 Cada mudança de estado resulta em uma chamada a URL configurada juntamente a um pacote de informações sobre o estado atual do pagamento. Cada \emph{Gateway} envia informações distintas, mas bastante semelhantes. A mais importante delas é o que é chamado de ID do Cliente que é um número especificado pelo Sistema e que será vinculado aquele pagamento. Este campo deve ser utilizado pelo Sistema para identificar internamente o que está sendo pago. O Ajuda.Ai utiliza este campo para manter o ID do objeto \codigo{Payment} gerado no início do processo a fim de manter o estado do pagamento e vincular a instituição correspondente.
 

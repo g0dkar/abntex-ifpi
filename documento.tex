@@ -1,9 +1,9 @@
-%% ------------------------------------------------------------------------
-%% TCC IFPI de Rafael M. Lins de Araújo, 2016
-%% ------------------------------------------------------------------------
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %%
+%%        TCC de Rafael M. Lins de Araújo, 2016        %%
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %%
 
 %% Preâmbulo (configurações, pacotes e tudo mais)
-\input{pre-textual/preambulo.tex}
+\input{estrutura/preambulo}
 
 %% Início do Documento
 \begin{document}
@@ -11,19 +11,19 @@
 %% Documento será escrito em Português do Brasil
 \selectlanguage{brazil}
 
-%% Inclui capa, contra-capa, dedicatória, listas, sumário, ...
-\input{pre-textual/pre-textual.tex}
+%% Elementos pré-textuais: capa, folha de rosto, dedicatória, listas, sumário, etc.
+\input{estrutura/pre-textual.tex}
 
 %% Indica que a partir daqui ficarão os elementos textuais (TCC em si)
 \textual
 
 %% Inclui os capítulos do TCC (parte textual)
-\input{capitulos/capitulos-tcc}
+\input{estrutura/textual}
 
 %% Finalizações para o PDF
 \bookmarksetup{startatroot}
 
-%% Finalização do Documento (anexos, tabelas, bibliografia, etc.)
-\include{pos-textual/finalizacao}
+%% Elementos pós-textuais: Referências, Anexos, etc.
+\include{estrutura/pos-textual}
 
 \end{document}

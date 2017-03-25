@@ -1,0 +1,71 @@
+%% Preambulo LaTeX: Define classes e características do documento
+%% Definição do docuemnto
+\documentclass[
+	%article,			% Define que este será um artigo (e não uma tese/monografia/relatório)
+	12pt,				% Fonte: 12pt
+	oneside,			% Impressão: oneside = 1 face, twoside = 2 faces (frente-e-verso)
+    %openright,			% capítulos começam em página ímpar (use apenas se usar "twoside")
+	a4paper,			% Tamanho do Papel: A4
+    chapter=TITLE,		% Todos os capítulos devem ficam em caixa alta
+    section=TITLE,		% Todas as seções devem ficar em caixa alta
+	english,			% Adiciona Idioma para Hifenização: Inglês
+    %spanish,			% Adiciona Idioma para Hifenização: Espanhol
+    %french,			% Adiciona Idioma para Hifenização: Francês
+	brazil				% Adiciona Idioma para Hifenização: Português do Brasil (o último idioma se torna o principal do documento)
+]{abntex2}				% Utilizar ABNTeX2
+
+
+
+%% Tipografia
+%% Abra este arquivo e selecione uma das opções de fonte nele. A padrão é Times.
+\input{configuracoes/tipografia}
+
+
+
+%% Pacotes usados pelo documento (se não entender não mexa, hehehe)
+\usepackage{courier}                    % Permite a utilização da fonte Courier (para códigos-fonte)
+\usepackage[T1]{fontenc}				% Seleção de códigos de fonte.
+\usepackage[utf8]{inputenc}				% Codificação do documento (conversão automática dos acentos)
+\usepackage{indentfirst}				% Indenta o primeiro parágrafo de cada seção.
+\usepackage{nomencl} 					% Usado pela Lista de símbolos
+\usepackage{color}						% Controle das cores
+\usepackage{graphicx}					% Inclusão de gráficos
+\usepackage{float}						% Melhorias para posicionamento de gráficos e tabelas
+\usepackage{microtype} 					% Melhorias na justificação
+\usepackage{lastpage}   		        % Dá acesso ao número da última página do documento
+\usepackage{booktabs}					% Comandos para tabelas
+\usepackage{multirow, array}			% Múltiplas linhas e colunas em tabelas
+\usepackage[hyphenbreaks]{breakurl}		% Hifenação para URLs no texto
+\usepackage[table,xcdraw]{xcolor}       % Cores para algumas tabelas especiais
+\usepackage[brazilian,hyperpageref]{backref}	 % Inclui nas Referências as páginas onde há as citações
+
+
+
+%% Adiciona as alterações do ABNTeX-IFPI
+\usepackage{abntex-ifpi/abntex-ifpi}	% Modificações do ABNTeX para o IFPI
+\usepackage{abntex-ifpi/tikz-uml}	    % Pacote Tikz UML para criar UML no LaTeX
+
+
+
+%% Metadados
+\input{configuracoes/pdf}
+
+
+
+%% Metadados
+\input{configuracoes/metadados}
+
+
+
+%% Configuração do "Citado nas páginas"
+\input{configuracoes/citacoes}
+
+
+
+%% Cores
+\input{configuracoes/cores}
+
+
+
+%% Espaçamentos
+\input{configuracoes/espacamentos}
