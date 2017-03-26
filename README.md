@@ -41,7 +41,7 @@ Apesar de ser bem _na cara_ a forma de trabalhar e botar a coisa toda para funci
 1. `configuracoes/metadados.tex`: É onde você configura autor, titulo e outras coisas;
 2. `configuracoes/tipografia.tex`: Aqui você pode configurar que fonte seu documento vai usar;
 3. Na pasta `pre-textual`: Veja os arquivos que lhe interessarem na parte pré-textual. Observe que não há arquivos para as partes obrigatórias (como capa e folha de aprovação);
-4. `estrutura\textual.tex`: Aqui é onde você inclui e remove capítulos;
+4. `estrutura/textual.tex`: Aqui é onde você inclui e remove capítulos;
 5. Na pasta `capitulos`: Veja como são escritos os capítulos;
 6. `bibliografia.bib`: Este é o banco de dados das citações que você colocará no texto através do comando `\cite{nome-da-referencia-no-arquivo-bibliografia.bib}`;
 7. `documento.tex`: Arquivo principal do documento, e este que deve ser compilado para gerar seu trabalho.
