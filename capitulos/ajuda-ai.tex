@@ -314,17 +314,17 @@ Um dos diferenciais do Ajuda.Ai é o suporte a diferentes \emph{gateways} de pag
         \umlclass[x=3.5, y=-4]{PagSeguroPaymentGateway}{}{
 			+ createPayment() : Payment \\
             + processEvent() : PaymentEvent}
-        \umlsimpleclass[x=-3, y=3]{InstitutionSiteController}
-        \umlsimpleclass[x=3, y=3]{TransactionNotificationsController}
-        \umlcompo[very thick]{InstitutionSiteController}{PaymentGateway}
-        \umlcompo[very thick]{TransactionNotificationsController}{PaymentGateway}
+        \umlsimpleclass[x=-3, y=3]{InstitutionController}
+        \umlsimpleclass[x=3, y=3]{TransactionNotificationController}
+        \umlcompo[very thick]{InstitutionController}{PaymentGateway}
+        \umlcompo[very thick]{TransactionNotificationController}{PaymentGateway}
         \umlimpl[very thick]{MoipPaymentGateway}{PaymentGateway}
         \umlimpl[very thick]{PagSeguroPaymentGateway}{PaymentGateway}
   \end{tikzpicture}
   \legend{Fonte: Elaborado pelo Autor}
 \end{figure}
 
-Cada implementação de \emph{gateway} de pagamento suportado implementa a interface PaymentGateway. Esta interface tem dois métodos:
+Cada implementação de \emph{gateway} de pagamento suportado implementa a interface \codigo{PaymentGateway}. Esta interface tem dois métodos:
 
 \begin{lista}
   \item \textbf{\codigo{createPayment()}}: Cria uma ordem de pagamento junto ao \emph{gateway} de pagamento. Esse método tem liberdade de redirecionar o usuário para o sistema do \emph{gateway} (MoIP e a maioria dos gateways nacionais) ou enviar algum pedaço de informação, como JSON, como resposta ao usuário (PayPal + JavaScript para pagamento na própria página). Este método deve retornar um objeto \codigo{Payment} para ser persistido a fim de acompanhar o andamento do pagamento;

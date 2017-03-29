@@ -85,6 +85,7 @@
 % ----------------------------------------------------------
 \newcommand{\membroumname}{Primeiro membro}
 \newcommand{\membrodoisname}{Segundo membro}
+\newcommand{\membrotresname}{Terceiro membro}
 \newcommand{\dataapresentacaoname}{01 de Janeiro de 1970}
 
 % Comandos de dados - Membro da banca um
@@ -101,7 +102,14 @@
   {\renewcommand{\imprimirmembrodoisRotulo}{#1}
    \renewcommand{\imprimirmembrodois}{#2}}
 
-% Comandos de dados - Membro da banca dois
+% Comandos de dados - Membro da banca três
+\providecommand{\imprimirmembrotresRotulo}{}
+\providecommand{\imprimirmembrotres}{}
+\newcommand{\membrotres}[2][\membrotresname]
+  {\renewcommand{\imprimirmembrotresRotulo}{#1}
+   \renewcommand{\imprimirmembrotres}{#2}}
+
+% Comandos de dados - Data da apresentação
 \providecommand{\imprimirdataapresentacao}{}
 \providecommand{\imprimirdataapresentacao}{}
 \newcommand{\dataapresentacao}[2][\dataapresentacaoname]{\renewcommand{\dataapresentacao}{#2}}
@@ -142,8 +150,6 @@
 % ----------------------------------------------------------
 % Folha de Rosto (contracapa)
 % ----------------------------------------------------------
-\makeatletter
-
 \renewcommand{\folhaderostocontent}{
 \begin{center}
   {\ABNTEXchapterfont\MakeUppercase{\imprimirautor}}
@@ -179,7 +185,7 @@
 \end{center}
 }
 
-\makeatother
+
 
 % ----------------------------------------------------------
 % Folha de Aprovação
@@ -208,9 +214,69 @@
   \end{center}
 
   \setlength{\ABNTEXsignwidth}{12cm}
+  \setlength{\ABNTEXsignskip}{0.5cm}
   \assinatura{\textbf{\imprimirorientador} \\ Instituto Federal de Educação, Ciência e Tecnologia do Piauí - IFPI}
   \assinatura{\textbf{\imprimirmembroum} \\ Instituto Federal de Educação, Ciência e Tecnologia do Piauí - IFPI}
   \assinatura{\textbf{\imprimirmembrodois} \\ Instituto Federal de Educação, Ciência e Tecnologia do Piauí - IFPI}
+  %\assinatura{\textbf{\imprimirmembrotres} \\ Instituto Federal de Educação, Ciência e Tecnologia do Piauí - IFPI}
+
+  \begin{center}
+    \vspace*{\fill}
+    {\MakeUppercase{\imprimirlocal}}
+    \par
+    {\imprimirdata}
+    \vspace*{1cm}
+  \end{center}
+
+\end{folhadeaprovacao}
+}
+
+
+% ----------------------------------------------------------
+% Folha de Aprovação - Duas Colunas (para 4 membros)
+% ----------------------------------------------------------
+\newcommand{\imprimirfolhadeaprovacaoduascolunas}{
+\begin{folhadeaprovacao}
+  \begin{center}
+    {\ABNTEXchapterfont\MakeUppercase{\imprimirautor}}
+    \vspace*{\fill}
+
+    \vspace*{\fill}
+    {\ABNTEXchapterfont\MakeUppercase{\imprimirtitulo}}
+    \vspace*{\fill}
+
+    \hspace{.45\textwidth}
+    \begin{minipage}{.5\textwidth}
+      \imprimirpreambulo
+    \end{minipage}
+    \vspace*{\fill}
+  \end{center}
+
+  \begin{center}
+  	Aprovado pela banca examinadora em \dataapresentacao.
+    
+  	BANCA EXAMINADORA:
+  \end{center}
+
+  \begin{center}
+    \setlength{\ABNTEXsignwidth}{6cm}
+    \setlength{\ABNTEXsignskip}{0.7cm}
+    \begin{minipage}{.45\textwidth}
+      \assinatura{\textbf{\imprimirorientador} \\ Instituto Federal de Educação, Ciência e Tecnologia do Piauí - IFPI}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{.45\textwidth}
+      \assinatura{\textbf{\imprimirmembroum} \\ Instituto Federal de Educação, Ciência e Tecnologia do Piauí - IFPI}
+    \end{minipage}
+    
+    \begin{minipage}{.45\textwidth}
+      \assinatura{\textbf{\imprimirmembrodois} \\ Instituto Federal de Educação, Ciência e Tecnologia do Piauí - IFPI}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{.45\textwidth}
+      \assinatura{\textbf{\imprimirmembrotres} \\ Instituto Federal de Educação, Ciência e Tecnologia do Piauí - IFPI}
+    \end{minipage}
+  \end{center}
 
   \begin{center}
     \vspace*{\fill}
