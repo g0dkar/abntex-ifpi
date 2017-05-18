@@ -1,0 +1,694 @@
+\chapter{Documentação da API REST Web} \label{anexo:a}
+
+\textbf{Nota:} Todos os parâmetros são obrigatórios, a menos que especificado que seja opcional. Parâmetros que fazem parte da própria URL são indicados com um sinal de dois-pontos no início de seu nome. \\ 
+
+\begin{caixa}{Autenticação do Usuário}{}
+
+Retorna informações sobre o usuário logado. Usado para, além de pegar informações sobre o usuário logado, manter a Sessão de autenticação ativa.
+
+\begin{itemize}
+\item \textbf{URL}
+	\begin{itemize}
+		\item \codigo{/auth/login}
+	\end{itemize}
+
+\item \textbf{Método}
+	\begin{itemize}
+		\item \codigo{POST}
+	\end{itemize}
+
+\item \textbf{Parâmetros}
+	\begin{itemize}
+    	\item Nenhum Parâmetro
+	\end{itemize}
+
+\item \textbf{Parâmetros de Dados}
+	\begin{itemize}
+        \item \codigo{username=String} Nome de usuário ou E-mail do Usuário que quer se autenticar
+        \item \codigo{password=String} Senha do Usuário
+	\end{itemize}
+
+\item \textbf{Resposta de Sucesso}
+	\begin{itemize}
+		\item \textbf{Código:} \codigo{200 OK} \\ \textbf{Conteúdo:} JSON de um objeto \codigo{User} apenas com os campos \codigo{id}, \codigo{username}, \codigo{email}, \codigo{firstname} e \codigo{lastname} do Usuário logado.
+	\end{itemize}
+
+\item \textbf{Resposta de Erro}
+	\begin{itemize}
+		\item \textbf{Código:} \codigo{200 OK} \\ \textbf{Conteúdo:} \codigo{Array} com os erros de autenticação \\ \textbf{Motivo:} Usuário ou senha incorretos.
+        \item \textbf{Código:} \codigo{405 METHOD NOT ALLOWED} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} A chamada HTTP não utilizou o método \codigo{POST}.
+	\end{itemize}
+
+\end{itemize}
+\end{caixa}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{caixa}{Dados do Usuário Logado}{}
+
+Retorna informações sobre o usuário logado. Usado para, além de pegar informações sobre o usuário logado, manter a Sessão de autenticação ativa. A sessão de autenticação dura por 30 minutos após a última requisição a API.
+
+\begin{itemize}
+\item \textbf{URL}
+	\begin{itemize}
+		\item \codigo{/profile/me}
+	\end{itemize}
+
+\item \textbf{Método}
+	\begin{itemize}
+		\item \codigo{GET}
+	\end{itemize}
+
+\item \textbf{Parâmetros}
+	\begin{itemize}
+		\item Nenhum Parâmetro
+	\end{itemize}
+
+\item \textbf{Parâmetros de Dados}
+	\begin{itemize}
+		\item Nenhum Parâmetro
+	\end{itemize}
+
+\item \textbf{Resposta de Sucesso}
+	\begin{itemize}
+		\item \textbf{Código:} \codigo{200 OK} \\ \textbf{Conteúdo:} JSON do objeto \codigo{User} do usuário logado, apenas com os campos \codigo{id}, \codigo{username}, \codigo{email}, \codigo{firstname} e \codigo{lastname}.
+	\end{itemize}
+
+\item \textbf{Resposta de Erro}
+	\begin{itemize}
+		\item \textbf{Código:} \codigo{401 UNAUTHORIZED} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} Não há um Usuário logado
+        \item \textbf{Código:} \codigo{405 METHOD NOT ALLOWED} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} A chamada HTTP não utilizou o método \codigo{GET}.
+	\end{itemize}
+
+\end{itemize}
+\end{caixa}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{caixa}{Dados de um Usuário}{}
+
+Retorna informações sobre o usuário especificado a partir de seu nome de usuário.
+
+\begin{itemize}
+\item \textbf{URL}
+	\begin{itemize}
+		\item \codigo{/profile/:username}
+	\end{itemize}
+
+\item \textbf{Método}
+	\begin{itemize}
+		\item \codigo{GET}
+	\end{itemize}
+
+\item \textbf{Parâmetros}
+	\begin{itemize}
+		\item \codigo{username=String} - \textbf{(opcional se \codigo{id} for especificado)} Nome único de usuário
+	\end{itemize}
+
+\item \textbf{Parâmetros de Dados}
+	\begin{itemize}
+		\item \codigo{id=Integer} - Identificador do usuário
+	\end{itemize}
+
+\item \textbf{Resposta de Sucesso}
+	\begin{itemize}
+		\item \textbf{Código:} \codigo{200 OK} \\ \textbf{Conteúdo:} JSON do objeto \codigo{User} do usuário encontrado, apenas com os campos \codigo{id}, \codigo{username}, \codigo{firstname} e \codigo{lastname}.
+	\end{itemize}
+
+\item \textbf{Resposta de Erro}
+	\begin{itemize}
+		\item \textbf{Código:} \codigo{404 NOT FOUND} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} Usuário não existe
+        \item \textbf{Código:} \codigo{405 METHOD NOT ALLOWED} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} A chamada HTTP não utilizou o método \codigo{GET}.
+	\end{itemize}
+
+\end{itemize}
+\end{caixa}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{caixa}{Dados de uma Instituição}{}
+
+Retorna todos os dados de uma Instituição.
+
+\begin{itemize}
+\item \textbf{URL}
+	\begin{itemize}
+		\item \codigo{/institution/:slug}
+	\end{itemize}
+
+\item \textbf{Método}
+	\begin{itemize}
+		\item \codigo{GET}
+	\end{itemize}
+
+\item \textbf{Parâmetros}
+	\begin{itemize}
+		\item \codigo{slug=String} - Nome da URL da Instituição
+	\end{itemize}
+
+\item \textbf{Parâmetros de Dados}
+	\begin{itemize}
+		\item Nenhum Parâmetro
+	\end{itemize}
+
+\item \textbf{Resposta de Sucesso}
+	\begin{itemize}
+		\item \textbf{Código:} \codigo{200 OK} \\ \textbf{Conteúdo:} JSON com os dados da Instituição
+	\end{itemize}
+
+\item \textbf{Resposta de Erro}
+	\begin{itemize}
+		\item \textbf{Código:} \codigo{404 NOT FOUND} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} Instituição não existe
+        \item \textbf{Código:} \codigo{405 METHOD NOT ALLOWED} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} A chamada HTTP não utilizou o método \codigo{GET}.
+	\end{itemize}
+
+\end{itemize}
+\end{caixa}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{caixa}{Dados de uma Instituição escolhida Aleatoriamente}{}
+
+Retorna todos os dados de uma Instituição escolhida aleatoriamente.
+
+\begin{itemize}
+\item \textbf{URL}
+	\begin{itemize}
+		\item \codigo{/institution/random}
+	\end{itemize}
+
+\item \textbf{Método}
+	\begin{itemize}
+		\item \codigo{GET}
+	\end{itemize}
+
+\item \textbf{Parâmetros}
+	\begin{itemize}
+		\item Nenhum Parâmetro
+	\end{itemize}
+
+\item \textbf{Parâmetros de Dados}
+	\begin{itemize}
+		\item Nenhum Parâmetro
+	\end{itemize}
+
+\item \textbf{Resposta de Sucesso}
+	\begin{itemize}
+		\item \textbf{Código:} \codigo{200 OK} \\ \textbf{Conteúdo:} JSON com os dados de uma Instituição
+	\end{itemize}
+
+\item \textbf{Resposta de Erro}
+	\begin{itemize}
+		\item \textbf{Código:} \codigo{404 NOT FOUND} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} Não há nenhuma instituição cadastrada no banco de dados
+        \item \textbf{Código:} \codigo{405 METHOD NOT ALLOWED} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} A chamada HTTP não utilizou o método \codigo{GET}.
+	\end{itemize}
+
+\end{itemize}
+\end{caixa}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{caixa}{Lista de Instituições escolhidas Aleatoriamente}{}
+
+Retorna uma lista de até 12 Instituições escolhidas aleatoriamente. Útil para exibir Instituições na Página Inicial.
+
+\begin{itemize}
+\item \textbf{URL}
+	\begin{itemize}
+		\item \codigo{/institution/random-list}
+	\end{itemize}
+
+\item \textbf{Método}
+	\begin{itemize}
+		\item \codigo{GET}
+	\end{itemize}
+
+\item \textbf{Parâmetros}
+	\begin{itemize}
+		\item Nenhum Parâmetro
+	\end{itemize}
+
+\item \textbf{Parâmetros de Dados}
+	\begin{itemize}
+		\item Nenhum Parâmetro
+	\end{itemize}
+
+\item \textbf{Resposta de Sucesso}
+	\begin{itemize}
+		\item \textbf{Código:} \codigo{200 OK} \\ \textbf{Conteúdo:} JSON com um \codigo{Array} com dados de Instituições escolhidas aleatoriamente. Máximo de 12 instituições.
+	\end{itemize}
+
+\item \textbf{Resposta de Erro}
+	\begin{itemize}
+		\item \textbf{Código:} \codigo{404 NOT FOUND} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} Não há nenhuma instituição cadastrada no banco de dados
+        \item \textbf{Código:} \codigo{405 METHOD NOT ALLOWED} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} A chamada HTTP não utilizou o método \codigo{GET}.
+	\end{itemize}
+
+\end{itemize}
+\end{caixa}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{caixa}{Estatísticas de Doações}{}
+
+Retorna quantas doações a Instituição recebeu e o valor total das mesmas.
+
+\begin{itemize}
+\item \textbf{URL}
+	\begin{itemize}
+		\item \codigo{/institution/:slug/donation-stats}
+	\end{itemize}
+
+\item \textbf{Método}
+	\begin{itemize}
+		\item \codigo{GET}
+	\end{itemize}
+
+\item \textbf{Parâmetros}
+	\begin{itemize}
+		\item \codigo{slug=String} - Nome da URL da Instituição
+	\end{itemize}
+
+\item \textbf{Parâmetros de Dados}
+	\begin{itemize}
+		\item Nenhum Parâmetro
+	\end{itemize}
+
+\item \textbf{Resposta de Sucesso}
+	\begin{itemize}
+		\item \textbf{Código:} \codigo{200 OK} \\ \textbf{Conteúdo:} JSON no seguinte formato: \\ \codigo{\{ count: Integer, value: Integer \}} - O valor deve ser dividido por 100 para ser exibido adequadamente.
+	\end{itemize}
+
+\item \textbf{Resposta de Erro}
+	\begin{itemize}
+		\item \textbf{Código:} \codigo{404 NOT FOUND} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} Instituição não existe
+        \item \textbf{Código:} \codigo{405 METHOD NOT ALLOWED} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} A chamada HTTP não utilizou o método \codigo{GET}.
+	\end{itemize}
+
+\end{itemize}
+\end{caixa}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{caixa}{Doação - Passo 01: Registrar o Pagamento}{}
+
+Inicia o processo de doação gravando os dados da mesma no Ajuda.Ai. Posteriormente o usuário deverá ser redirecionando para o \emph{gateway} de pagamento vinculado a Instituição através do método \codigo{/pagar/:id}.
+
+\begin{itemize}
+\item \textbf{URL}
+	\begin{itemize}
+		\item \codigo{/institution/:slug/doar}
+	\end{itemize}
+
+\item \textbf{Método}
+	\begin{itemize}
+		\item \codigo{POST}
+	\end{itemize}
+
+\item \textbf{Parâmetros}
+	\begin{itemize}
+		\item \codigo{slug=String} - Nome da URL da Instituição
+	\end{itemize}
+
+\item \textbf{Parâmetros de Dados}
+	\begin{itemize}
+        \item \codigo{value=Integer} - Valor da Doação como um Inteiro (10000 = \$100,00)
+        \item \codigo{name=String} - \textbf{(opcional se feito o login)} Nome Completo do Doador
+        \item \codigo{email=String} - \textbf{(opcional se feito o login)} E-mail do Doador
+        %\item \codigo{anonymous=Boolean} - Doação anônima?
+        \item \codigo{addcosts=Boolean} - Adicionar custos operacionais do Gateway ao valor da doação?
+        \item \codigo{addcoststype=Integer} - Tipo de pagamento que será utilizado (para cálculo do custo operacional)
+	\end{itemize}
+
+\item \textbf{Resposta de Sucesso}
+	\begin{itemize}
+		\item \textbf{Código:} \codigo{200 OK} \\ \textbf{Conteúdo:} Objeto \codigo{Payment} com os dados do pagamento criado
+	\end{itemize}
+
+\item \textbf{Resposta de Erro}
+	\begin{itemize}
+		\item \textbf{Código:} \codigo{404 NOT FOUND} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} Instituição não existe
+        \item \textbf{Código:} \codigo{405 METHOD NOT ALLOWED} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} A chamada HTTP não utilizou o método \codigo{POST}.
+	\end{itemize}
+
+\end{itemize}
+\end{caixa}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{caixa}{Doação - Passo 02: Redirecionamento ao \emph{Gateway}}{}
+
+Continua o processo de doação redirecionando o usuário para o \emph{gateway} de pagamento vinculado ao \codigo{Payment} especificado.
+
+\begin{itemize}
+\item \textbf{URL}
+	\begin{itemize}
+		\item \codigo{/pagar/:id}
+	\end{itemize}
+
+\item \textbf{Método}
+	\begin{itemize}
+		\item \codigo{GET}
+	\end{itemize}
+
+\item \textbf{Parâmetros}
+	\begin{itemize}
+		\item \codigo{id=UUID} - Identificador do pagamento (UUID)
+	\end{itemize}
+
+\item \textbf{Parâmetros de Dados}
+	\begin{itemize}
+        \item Nenhum Parâmetro
+	\end{itemize}
+
+\item \textbf{Resposta de Sucesso}
+	\begin{itemize}
+		\item \textbf{Código:} \codigo{302 MOVED TEMPORARILY} \\ \textbf{Conteúdo:} Nenhum
+	\end{itemize}
+
+\item \textbf{Resposta de Erro}
+	\begin{itemize}
+		\item \textbf{Código:} \codigo{404 NOT FOUND} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} Pagamento não existe
+        \item \textbf{Código:} \codigo{409 CONFLICT} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} Notificações do \emph{Gateway} informam que este pagamento já está ou já foi processado.
+        \item \textbf{Código:} \codigo{405 METHOD NOT ALLOWED} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} A chamada HTTP não utilizou o método \codigo{GET}.
+	\end{itemize}
+
+\end{itemize}
+\end{caixa}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{caixa}{\emph{Posts} de uma Instituição}{}
+
+Retorna uma lista de tamanho limitado com os \emph{posts} de uma Instituição.
+
+\begin{itemize}
+\item \textbf{URL}
+	\begin{itemize}
+		\item \codigo{/institution/:slug/posts}
+	\end{itemize}
+
+\item \textbf{Método}
+	\begin{itemize}
+		\item GET
+	\end{itemize}
+
+\item \textbf{Parâmetros}
+	\begin{itemize}
+		\item \codigo{slug=String} - Nome de URL da Instituição
+	\end{itemize}
+
+\item \textbf{Parâmetros de Dados}
+	\begin{itemize}
+		\item \codigo{size=Integer} - \textbf{(opcional)} Quantidade de Itens na lista. Padrão: \codigo{10}. Máximo: \codigo{50}.
+        \item \codigo{offset=Integer} - \textbf{(opcional)} Primeiro item da lista. Padrão: \codigo{0}.
+	\end{itemize}
+
+\item \textbf{Resposta de Sucesso}
+	\begin{itemize}
+		\item \textbf{Código:} \codigo{200 OK} \\ \textbf{Conteúdo:} JSON no seguinte formato: \\ \codigo{\{ size: Integer, total: Integer, offset: Integer, items: [InstitutionPost] \}} \\
+        Nota: os \emph{posts} terão apenas os campos id, slug, titulo, subtitulo, criador e data e hora de criação.
+	\end{itemize}
+
+\item \textbf{Resposta de Erro}
+	\begin{itemize}
+		\item \textbf{Código:} \codigo{404 NOT FOUND} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} Instituição não existe
+        \item \textbf{Código:} \codigo{405 METHOD NOT ALLOWED} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} A chamada HTTP não utilizou o método \codigo{GET}.
+	\end{itemize}
+
+\end{itemize}
+\end{caixa}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{caixa}{Post Único de uma Instituição}{}
+
+Retorna um único \emph{post} de uma Instituição.
+
+\begin{itemize}
+\item \textbf{URL}
+	\begin{itemize}
+		\item \codigo{/institution/:slug/:post-slug}
+	\end{itemize}
+
+\item \textbf{Método}
+	\begin{itemize}
+		\item \codigo{GET}
+	\end{itemize}
+
+\item \textbf{Parâmetros}
+	\begin{itemize}
+		\item \codigo{slug=String} - Nome da URL da Instituição
+        \item \codigo{post-slug=String} - Nome da URL específico do \emph{post} da Instituição
+	\end{itemize}
+
+\item \textbf{Parâmetros de Dados}
+	\begin{itemize}
+		\item Nenhum Parâmetro
+	\end{itemize}
+
+\item \textbf{Resposta de Sucesso}
+	\begin{itemize}
+		\item \textbf{Código:} \codigo{200 OK} \\ \textbf{Conteúdo:} JSON com os dados do \emph{post} da Instituição
+	\end{itemize}
+
+\item \textbf{Resposta de Erro}
+	\begin{itemize}
+		\item \textbf{Código:} \codigo{404 NOT FOUND} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} Instituição ou \emph{Post} não existem
+        \item \textbf{Código:} \codigo{405 METHOD NOT ALLOWED} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} A chamada HTTP não utilizou o método \codigo{GET}.
+	\end{itemize}
+
+\end{itemize}
+\end{caixa}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{caixa}{Dados sobre Doações do Usuário Logado}{}
+
+Retorna algumas informações sobre as doações feitas pelo usuário logado.
+
+\textbf{* Este método requer quer o usuário tenha feito login.}
+
+\begin{itemize}
+\item \textbf{URL}
+	\begin{itemize}
+		\item \codigo{/profile/dashboard-data}
+	\end{itemize}
+
+\item \textbf{Método}
+	\begin{itemize}
+		\item \codigo{GET}
+	\end{itemize}
+
+\item \textbf{Parâmetros}
+	\begin{itemize}
+        \item Nenhum Parâmetro
+	\end{itemize}
+
+\item \textbf{Parâmetros de Dados}
+	\begin{itemize}
+		\item Nenhum Parâmetro
+	\end{itemize}
+
+\item \textbf{Resposta de Sucesso}
+	\begin{itemize}
+		\item \textbf{Código:} \codigo{200 OK} \\ \textbf{Conteúdo:} JSON no seguinte formato: \codigo{\{ donations: Integer, institutions: Integer, value: Integer, meanValue: Integer, posts: [InstitutionPost], payments: [Payment] \}}
+        \item \textbf{Descrição dos campos:}
+          \begin{itemize}
+	        \item \codigo{donations}: Quantidade de doações feitas pelo usuário;
+            \item \codigo{institutions}: Quantidade de instituições únicas contempladas pelas doações;
+            \item \codigo{value}: Somatório dos valores das doações;
+            \item \codigo{meanValue}: Média dos valores das doações;
+            \item \codigo{posts}: Entre 0 e 10 dos \emph{posts} mais recentes das instituições contempladas pelas doações (``Últimas Notícias'');
+            \item \codigo{payments}: Entre 0 e 10 das últimas doações feitas pelo usuário.
+          \end{itemize}
+	\end{itemize}
+
+\item \textbf{Resposta de Erro}
+	\begin{itemize}
+		\item \textbf{Código:} \codigo{401 UNAUTHORIZED} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} Não há um Usuário logado
+	\end{itemize}
+
+\end{itemize}
+\end{caixa}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{caixa}{Alterar Informações do usuário Logado}{}
+
+Altera informações do usuário logado como nome, e-mail, senha, etc.
+
+\textbf{* Este método requer quer o usuário tenha feito login.}
+
+\begin{itemize}
+\item \textbf{URL}
+	\begin{itemize}
+		\item \codigo{/profile/save}
+	\end{itemize}
+
+\item \textbf{Método}
+	\begin{itemize}
+		\item \codigo{POST}
+	\end{itemize}
+
+\item \textbf{Parâmetros}
+	\begin{itemize}
+        \item Nenhum Parâmetro
+	\end{itemize}
+
+\item \textbf{Parâmetros de Dados}
+	\begin{itemize}
+		\item Nenhum Parâmetro
+	\end{itemize}
+
+\item \textbf{Resposta de Sucesso}
+	\begin{itemize}
+		\item \textbf{Código:} \codigo{200 OK} \\ \textbf{Conteúdo:} JSON do objeto \codigo{User} que foi alterado, apenas com os campos \codigo{id}, \codigo{username}, \codigo{email}, \codigo{firstname}, \codigo{lastname}.
+	\end{itemize}
+
+\item \textbf{Resposta de Erro}
+	\begin{itemize}
+		\item \textbf{Código:} \codigo{401 UNAUTHORIZED} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} Não há um Usuário logado
+        \item \textbf{Código:} \codigo{405 METHOD NOT ALLOWED} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} A chamada HTTP não utilizou o método \codigo{POST}.
+	\end{itemize}
+
+\end{itemize}
+\end{caixa}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{caixa}{Dados sobre as Instituições pertencentes ao Usuário}{}
+
+Retorna algumas informações sobre as doações feitas a todas as Instituições pertencentes ao usuário logado.
+
+\textbf{* Este método requer quer o usuário tenha feito login.}
+
+\begin{itemize}
+\item \textbf{URL}
+	\begin{itemize}
+		\item \codigo{/institution/dashboard-data}
+	\end{itemize}
+
+\item \textbf{Método}
+	\begin{itemize}
+		\item \codigo{GET}
+	\end{itemize}
+
+\item \textbf{Parâmetros}
+	\begin{itemize}
+        \item Nenhum Parâmetro
+	\end{itemize}
+
+\item \textbf{Parâmetros de Dados}
+	\begin{itemize}
+		\item Nenhum Parâmetro
+	\end{itemize}
+
+\item \textbf{Resposta de Sucesso}
+	\begin{itemize}
+		\item \textbf{Código:} \codigo{200 OK} \\ \textbf{Conteúdo:} JSON no seguinte formato: \codigo{\{ donations: Integer, value: Integer, helpers: Integer, maxValue: Integer, meanValue: Integer, institutionCount: Integer, institutions: [Institution] \}}
+        \item \textbf{Descrição dos campos:}
+          \begin{itemize}
+	        \item \codigo{donations}: Quantidade de doações feitas às Instituições;
+            \item \codigo{value}: Somatório dos valores das doações;
+            \item \codigo{helpers}: Quantidade de usuários únicos que fizeram doações às Instituições;
+            \item \codigo{maxValue}: Maior valor doado;
+            \item \codigo{meanValue}: Média dos valores das doações;
+            \item \codigo{institutionCount}: Quantas Instituições pertencem ao usuário;
+            \item \codigo{institutions}: Entre 0 e 50 Instituições pertencentes ao usuário.
+          \end{itemize}
+	\end{itemize}
+
+\item \textbf{Resposta de Erro}
+	\begin{itemize}
+		\item \textbf{Código:} \codigo{401 UNAUTHORIZED} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} Não há um Usuário logado
+	\end{itemize}
+
+\end{itemize}
+\end{caixa}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{caixa}{Altera dados de uma Instituição pertencente ao Usuário}{}
+
+Altera informações sobre uma Instituição pertencente ao Usuário.
+
+\textbf{* Este método requer quer o usuário tenha feito login.}
+
+\begin{itemize}
+\item \textbf{URL}
+	\begin{itemize}
+		\item \codigo{/institution/save}
+	\end{itemize}
+
+\item \textbf{Método}
+	\begin{itemize}
+		\item \codigo{POST}
+	\end{itemize}
+
+\item \textbf{Parâmetros}
+	\begin{itemize}
+        \item Nenhum Parâmetro
+	\end{itemize}
+
+\item \textbf{Parâmetros de Dados}
+	\begin{itemize}
+		\item JSON de um objeto \codigo{Institution}
+	\end{itemize}
+
+\item \textbf{Resposta de Sucesso}
+	\begin{itemize}
+		\item \textbf{Código:} \codigo{200 OK} \\ \textbf{Conteúdo:} JSON do objeto \codigo{Institution} após ser alterado na persistência de dados.
+	\end{itemize}
+
+\item \textbf{Resposta de Erro}
+	\begin{itemize}
+    	\item \textbf{Código:} \codigo{200 OK} \\ \textbf{Conteúdo:} \codigo{Array} com erros de validação \\ \textbf{Motivo:} Um ou mais campos falhou na validação de dados.
+		\item \textbf{Código:} \codigo{401 UNAUTHORIZED} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} Não há um Usuário logado
+        \item \textbf{Código:} \codigo{405 METHOD NOT ALLOWED} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} A chamada HTTP não utilizou o método \codigo{POST}.
+	\end{itemize}
+
+\end{itemize}
+\end{caixa}

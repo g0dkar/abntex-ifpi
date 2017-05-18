@@ -3,9 +3,9 @@
 % ----------------------------------------------------------
 \chapter{Ajuda.Ai} \label{cha:ajudaai}
 
-O projeto Ajuda.Ai é um software de código-fonte aberto que visa ajudar instituições a arrecadar doações através da internet e aos usuários a doarem para instituições de forma simples, semelhante a adquirir um produto numa loja online, ter uma boa integração junto a plataformas de redes sociais e unir doadores e instituições. O projeto apresentado foi construído com uma interface para ser acessada pelo navegador através de uma aplicação web de página única (\emph{Single Page Application}), além de contar com uma API que dá suporte a outros tipos de interface, e no lado do servidor uma aplicação Java em um servidor de aplicação RedHat WildFly 10.
+O projeto Ajuda.Ai é um software de código-fonte aberto que visa ajudar instituições a arrecadar doações através da internet e aos usuários a doarem para instituições de forma simples, semelhante a adquirir um produto numa loja online, ter uma boa integração junto a plataformas de redes sociais e unir doadores e instituições. O projeto apresentado foi construído com uma interface para ser acessada pelo navegador através de uma aplicação web de página única (\emph{Single Page Application}\footnote{Técnica onde uma única página base é carregada do servidor no acesso e após o carregamento apenas fragmentos da página serão carregados e/ou alterados do servidor.}), além de contar com uma API que dá suporte a outros tipos de interface, e no lado do servidor uma aplicação Java em um servidor de aplicação RedHat WildFly 10.
 
-O código-fonte da ferramenta está disponível sob licença MIT no endereço \\ https://github.com/g0dkar/ajuda-ai e está publicada no endereço https://ajuda.ai. A API pode ser acessada através do \emph{endpoint} https://api.ajuda.ai/v1. Apesar da ferramenta estar pronta para uso, por hora nenhuma instituição real está sendo contemplada, mas duas instituições reais encontram-se cadastradas apenas para testes. Elas serão as primeiras a serem contactadas para iniciarem o uso do Ajuda.Ai. A divulgação da ferramenta será feita inicialmente através de contato direto com as Instituições e através de redes sociais. Futuramente, publicidades digitais podem ser uma opção viável para ajudar a trazer mais doadores e novas instituições ao Ajuda.Ai.
+O código-fonte da ferramenta está disponível sob licença MIT no endereço \\ https://github.com/g0dkar/ajuda-ai e está publicada no endereço https://ajuda.ai. A API pode ser acessada através do \emph{endpoint}\footnote{Ponto de Acesso: Endereço base para quaisquer chamadas a uma API REST} https://api.ajuda.ai/v1. Apesar da ferramenta estar pronta para uso, por hora nenhuma instituição real está sendo contemplada, mas duas instituições reais encontram-se cadastradas apenas para testes. Elas serão as primeiras a serem contactadas para iniciarem o uso do Ajuda.Ai. A divulgação da ferramenta será feita inicialmente através de contato direto com as Instituições e através de redes sociais. Futuramente, publicidade digital pode ser uma opção viável para ajudar a trazer mais doadores e novas instituições ao Ajuda.Ai.
 
 
 
@@ -13,10 +13,10 @@ O código-fonte da ferramenta está disponível sob licença MIT no endereço \\
 
 \section{Casos de Uso} \label{sec:ajudaai:casos}
 
-O levantamento de requisitos foi feito através da análise do mercado de \emph{crowdfunding} nacional, do crescimento e popularização da prática dessa modalidade de investimento, tendencias internacionais em relação ao mercado de empreendimentos sociais e leitura e análise da literatura exposta no capítulo \ref{cha:fundamentacao}. Os casos de uso relevantes resultantes do levantamento de requisitos foram:
+O levantamento de requisitos foi feito através da análise do mercado de \emph{crowdfunding} nacional, do crescimento e popularização da prática dessa modalidade de investimento, tendencias internacionais em relação ao mercado de empreendimentos sociais e leitura e análise da literatura exposta no Capítulo \ref{cha:fundamentacao}. Os casos de uso relevantes oriundos do levantamento de requisitos foram:
 
 \begin{lista}
-  \item \textbf{Caso de Uso 01 - Doação}: O usuário se identifica com o trabalho de uma determinada instituição e quer fazer uma doação a mesma através da Internet;
+  \item \textbf{Caso de Uso 01 - Doação}: O usuário se identifica com o trabalho de uma determinada instituição e quer fazer uma doação à mesma através da Internet;
   \item \textbf{Caso de Uso 02 - Comunicação com o Doador}: As instituições precisam de um canal para se comunicarem aos seus doadores e potenciais doadores;
   \item \textbf{Caso de Uso 03 - Acompanhamento das Doações}: É importante para a Instituição ter uma maneira de acompanhar a arrecadação de sua campanha e ter informações sobre quanto foi arrecadado e quando o dinheiro estará disponível;
   %\item \textbf{Caso de Uso 04 - Descobrimento de Instituições}: É importante para a Instituição ter uma maneira de acompanhar a arrecadação de sua campanha e ter informações sobre quanto foi arrecadado e quando o dinheiro estará disponível;
@@ -27,7 +27,7 @@ As especificações dos casos de uso estão disponíveis no Anexo \ref{anexo:b} 
 \begin{figure}[H]
   \caption{\label{fig:uml_caso_uso}Diagrama UML de Casos de Uso do Ajuda.Ai}
   \centering
-  \includegraphics[scale=0.4]{imagens/uml-casos-de-uso-02.pdf}
+  \includegraphics[scale=0.5]{imagens/uml-casos-de-uso-03.pdf}
   \legend{Fonte: Elaborado pelo Autor}
 \end{figure}
 
@@ -41,11 +41,11 @@ A seguir serão apresentados detalhes sobre a implementação do projeto, como t
 
 O sistema utiliza a plataforma Java em sua versão 8. Para facilitar a configuração da aplicação e gestão de dependências se utilizou a ferramenta Apache Maven\footnote{https://maven.apache.org}, que provê um fácil acesso a uma grande quantidade de ferramentas e bibliotecas. Além da resolução de dependências, o Apache Maven facilita o processo de construção e montagem da aplicação, automatiza a produção da documentação da aplicação apartir do JavaDoc\footnote{Padrão de documentação Java que utiliza comentários com formatação para documentar a aplicação} e é considerado uma ferramenta padrão da indústria.
 
-Como arcabouço para desenvolvimento de aplicação web se utilizou o Caelum VRaptor. O VRaptor é um arcabouço brasileiro MVC de código fonte aberto que traz alta produtividade para um desenvolvimento Java Web rápido e fácil com CDI\footnote{Retirado de http://www.vraptor.org/pt/ em 17/02/2017}. Dentre as funcionalidades mais interessantes do VRaptor estão a integração completa e simples com o arcabouço JBoss Weld, implementação de referência da especificação JSR 365\footnote{Especificação Java para um sistema de Injeção de Dependências usando o Padrão de Projeto Inversão de Controle} e arcabouço utilizado pelo RedHat Wildfly 10, e o uso do estilo convenção sob configuração onde se promove que, seguindo convenções bem definidas, não é necessário arquivos de configuração.
+Como arcabouço para desenvolvimento de aplicação web se utilizou o Caelum VRaptor. O VRaptor é um arcabouço brasileiro MVC de código fonte aberto que traz alta produtividade para um desenvolvimento Java Web rápido e fácil\footnote{Retirado de http://www.vraptor.org/pt/ em 17/02/2017}. Dentre as funcionalidades mais interessantes do VRaptor estão a integração completa e simples com a biblioteca JBoss Weld, implementação de referência da especificação JSR 365\footnote{Especificação Java para um sistema de Injeção de Dependências (CDI) usando o Padrão de Projeto Inversão de Controle} e biblioteca utilizada pelo RedHat Wildfly 10, e o uso do estilo convenção sob configuração onde se promove que, seguindo convenções bem definidas, não é necessário arquivos de configuração.
 
-Para persistência de dados foi utilizado o arcabouço JBoss Hibernate ORM. Como um arcabouço de mapeamento objeto-relacional o Hibernate ORM faz a persistência de dados em banco de dados relacionais via JDBC\footnote{Retirado de http://hibernate.org/orm/ em 17/02/2017}. Como solução para banco de dados foi utilizado o SGBD MariaDB, banco de dados de código aberto que surgiu a partir do MySQL quando o mesmo foi comprado pela Oracle em 2003. Ele é mantido pelos desenvolvedores originais do MySQL e eles garantem que sempre será um projeto de código aberto. usuários notáveis incluem Wikipedia, WordPress.com e Google\footnote{Retirado de https://mariadb.org/about/ em 17/02/2017}.
+Para persistência de dados foi utilizado o arcabouço JBoss Hibernate ORM. Como um arcabouço de mapeamento objeto-relacional, o Hibernate ORM faz a persistência de dados em banco de dados relacionais via JDBC\footnote{Retirado de http://hibernate.org/orm/ em 17/02/2017}. Como solução para banco de dados foi utilizado o SGBD MariaDB, banco de dados de código aberto que surgiu a partir do MySQL quando o mesmo foi comprado pela Oracle em 2003. Ele é mantido pelos desenvolvedores originais do MySQL e eles garantem que sempre será um projeto de código aberto. Usuários relevantes incluem Wikipedia, WordPress.com e Google\footnote{Retirado de https://mariadb.org/about/ em 17/02/2017}.
 
-Por fim, senhas são criptografadas no banco de dados se utilizando do algoritmo BCrypt. O BCrypt é uma função de \emph{hashing} de senhas projetada em 1999 por Niels Provos e David Mazières baseada na cifra \emph{Blowfish} que também incorporara um \emph{salt}\footnote{Bytes gerados de forma aleatória} para proteger as senhas contra ataques de tabelas arco-íris\footnote{\emph{Rainbow Table Attack}: Ataque que consiste em gerar um gigantesco banco de dados de \emph{hashes} pré-processados onde é possível se buscar pelo texto simples de um determinado \emph{hash} de um determinado algoritmo}. Nesse contexto, a maior vantagem do BCrypt é que esta é uma função cuja a quantidade de iterações pode ser configurada e assim, com o tempo, pode ser aumentada para torná-la mais lenta e resistente a ataques de força-bruta \cite{wiki:Bcrypt}.
+Por fim, senhas são criptografadas no banco de dados se utilizando do algoritmo BCrypt. O BCrypt é uma função de \emph{hashing} de senhas projetada em 1999 por Niels Provos e David Mazières baseada na cifra \emph{Blowfish} que também incorpora um \emph{salt}\footnote{Bytes gerados de forma aleatória} para proteger as senhas contra ataques de tabelas arco-íris\footnote{\emph{Rainbow Table Attack}: Ataque que consiste em gerar um gigantesco banco de dados de \emph{hashes} pré-processados onde é possível se buscar pelo texto simples de um determinado \emph{hash} de um determinado algoritmo}. Nesse contexto, a maior vantagem do BCrypt é que esta é uma função cuja a quantidade de iterações pode ser configurada e assim, com o tempo, pode ser aumentada para torná-la mais lenta e resistente a ataques de força-bruta \cite{wiki:Bcrypt}.
 
 
 
@@ -54,7 +54,7 @@ Por fim, senhas são criptografadas no banco de dados se utilizando do algoritmo
 \section{Apresentação da Aplicação} \label{sec:ajudaai:apresentacao}
 %\textbf{\textit{Aqui será apresentado screenshots e essas coisas. Ainda não sei exatamente de que maneira ou que texto escrever para apresentar as figuras. Talvez um run-down do processo de doação?}}
 
-Nesta seção será apresentada de forma ilustrada a solução desenvolvida neste trabalho. Parte do projeto visual, cores e detalhes estéticos são de autoria de Cândido Sales Gomes. A Figura \ref{fig:ss_ajudaai_01} apresenta a página inicial do projeto Ajuda.Ai. Nela temos um painel rotativo informativo com âncoras para páginas informativas sobre o projeto, uma lista mesclada entre instituições mais recentemente cadastradas no projeto e outras escolhidas aleatoriamente e uma seção com um pequeno mapa de âncoras para todas as páginas informativas do projeto.
+Nesta seção será apresentada de forma ilustrada a solução desenvolvida neste trabalho. Parte do projeto visual, cores e detalhes estéticos são de autoria de Cândido Sales Gomes. A Figura \ref{fig:ss_ajudaai_01} apresenta a página inicial do projeto Ajuda.Ai. Nela temos um painel rotativo informativo com âncoras para páginas informativas sobre o projeto, uma lista mesclada contendo instituições mais recentemente cadastradas no projeto e outras escolhidas aleatoriamente e uma seção com um pequeno mapa de âncoras para todas as páginas informativas do projeto.
 
 \begin{figure}[H]
 	\caption{\label{fig:ss_ajudaai_01}Captura de Tela da Página Inicial do Projeto Ajuda.Ai}
@@ -63,9 +63,9 @@ Nesta seção será apresentada de forma ilustrada a solução desenvolvida nest
     \legend{Fonte: Elaborado pelo Autor}
 \end{figure}
 
-A estrutura das páginas segue em grande parte a mesma estrutura visual na Figura \ref{fig:ss_ajudaai_01}: uma barra de navegação de posicionamento fixo no topo da tela, um painel com uma grande figura e uma frase de cabeçalho, o conteúdo da página atual e o rodapé.
+A estrutura das páginas segue em grande parte a mesma estrutura visual da Figura \ref{fig:ss_ajudaai_01}: uma barra de navegação de posicionamento fixo no topo da tela, um painel com uma grande figura e uma frase de cabeçalho, o conteúdo da página atual e o rodapé.
 
-Na Figura \ref{fig:ss_ajudaai_02} é apresentada uma página interna, especificamente a página ``Sobre'', que fala em linhas gerais sobre o projeto. Esse mesmo modelo é utilizado para todas as páginas internas, representadas pela entidade \codigo{Page}, apresentada na seção \ref{sec:ajudaai:organizacao}.
+Na Figura \ref{fig:ss_ajudaai_02} é apresentada uma página interna, especificamente a página ``Sobre'', que fala em linhas gerais sobre o projeto. Esse mesmo modelo é utilizado para todas as páginas internas, representadas pela entidade \codigo{Page}, apresentada na Seção \ref{sec:ajudaai:organizacao}.
 
 \begin{figure}[H]
 	\caption{\label{fig:ss_ajudaai_02}Captura de Tela da Página Sobre do Projeto Ajuda.Ai}
@@ -74,7 +74,7 @@ Na Figura \ref{fig:ss_ajudaai_02} é apresentada uma página interna, especifica
     \legend{Fonte: Elaborado pelo Autor}
 \end{figure}
 
-A seguir, na Figura \ref{fig:ss_ajudaai_03} é apresentada uma página de Instituição. Elementos visuais como a imagem do painel e logomarca da instituição são personalizáveis através de configurações da interface de administração. Além disso, é apresentada ao navegante uma contagem atualizada de quantas doações a instituição recebeu e o valor total das doações. O projeto visual do Ajuda.Ai se utiliza uma técnica de comunicação chamada \emph{Call-To-Action} onde elementos que invocam ações, como botões, têm seu texto escrito de forma imperativa a fim de incentivar quem o lê a tomar a ação. É possível observar um uso da técnica no botão ``Quero Ajudar'' na Figura \ref{fig:ss_ajudaai_03}, o qual leva o usuário a página onde é possível se fazer uma doação.
+A seguir, na Figura \ref{fig:ss_ajudaai_03} é apresentada uma página de Instituição. Elementos visuais como a imagem do painel e logomarca da instituição são personalizáveis através de configurações da interface de administração. Além disso, é apresentada ao usuário uma contagem atualizada de quantas doações a instituição recebeu e o valor total das doações. O projeto visual do Ajuda.Ai se utiliza de uma técnica de comunicação chamada \emph{Call-To-Action}\cite{wiki:CallToAction} onde elementos que invocam ações, como botões, têm seu texto escrito de forma imperativa a fim de incentivar quem o lê a tomar a ação. É possível observar um uso da técnica no botão ``Quero Ajudar'' na Figura \ref{fig:ss_ajudaai_03}, o qual leva o usuário à página onde é possível se fazer uma doação.
 
 \begin{figure}[H]
 	\caption{\label{fig:ss_ajudaai_03}Captura de Tela da Página da Instituição AMA do Projeto Ajuda.Ai}
@@ -83,9 +83,9 @@ A seguir, na Figura \ref{fig:ss_ajudaai_03} é apresentada uma página de Instit
     \legend{Fonte: Elaborado pelo Autor}
 \end{figure}
 
-Ao clicar no botão ``Quero Ajudar'' ou na aba ``Fazer uma Doação'', o usuário é levado a página de doação, cujo conteúdo é exibido na Figura \ref{fig:ss_ajudaai_04}. Como forma de incentivo a doações maiores, uma singela forma de \emph{gamefication}\footnote{Técnica onde se introduz elementos de jogos a fim de otimizar a execução de certas ações} foi utilizada na forma de uma barra de progresso com marcadores que é preenchida de acordo com o valor da doação, inicialmente em R\$ 20,00. É dada a opção de anonimato através da proibição da exibição do nome do doador. O nome e e-mail serão gravados para a emissão da ordem de pagamento junto ao \emph{Gateway}, mas se a publicação for proibida o nome não será exibido em lugar algum, nem mesmo para a instituição que recebeu a doação.
+Ao clicar no botão ``Quero Ajudar'' ou na aba ``Fazer uma Doação'', a página da Figura \ref{fig:ss_ajudaai_04} é exibida. Como forma de incentivo a doações maiores, uma singela forma de \emph{gamefication}\footnote{Técnica onde se introduz elementos de jogos a fim de otimizar a execução de certas ações} foi utilizada na forma de uma barra de progresso com marcadores que é preenchida de acordo com o valor da doação, inicialmente em R\$ 20,00. É dada a opção de anonimato através da proibição da exibição do nome do doador. O nome e e-mail serão gravados para a emissão da ordem de pagamento junto ao \emph{Gateway}, mas se a publicação for proibida o nome não será exibido em lugar algum, nem mesmo para a instituição que recebeu a doação.
 
-Por segurança, a página também inclui um teste CAPTCHA do serviço Google reCAPTCHA. O serviço reCAPTCHA é um sistema de caixa de diálogo para usuário baseado na interface do CAPTCHA, que pede para usuários digitarem palavras distorcidas exibidas na tela, para ajudar a digitalizar o texto de livros, enquanto protege \emph{sites} de robôs tentando acessar áreas restritas. O serviço fornece, para os \emph{sites} inscritos, imagens de palavras que o software de reconhecimento ótico de caracteres (OCR) não foi capaz de identificar as quais são apresentadas para humanos decifrarem como palavras CAPTCHAs, como parte do seu procedimento normal de validação. Depois eles retornam os resultados para o serviço reCAPTCHA, que envia esses resultados para a digitalização de seus projetos \cite{wiki:ReCAPTCHA}.
+Por segurança, a página também inclui um teste CAPTCHA do serviço Google reCAPTCHA. O serviço reCAPTCHA é um sistema de caixa de diálogo para usuário baseado na interface do CAPTCHA, que pode pedir aos usuários para resolver problemas considerados simples para seres humanos, mas complexo para máquinas. Problemas como digitar palavras distorcidas exibidas na tela ou identificar objetos em um conjunto de imagens são alguns dos utilizados. É interessante notar que, através desses desafios, o Google utiliza \emph{Crowdsourcing} para treinar suas inteligências artificiais. Esta tecnologia ajuda a proteger \emph{sites} de robôs tentando acessar áreas restritas ou tomar ações que deveriam ser tomadas por humanos\cite{wiki:ReCAPTCHA}.
 
 \begin{figure}[H]
 	\caption{\label{fig:ss_ajudaai_04}Captura de Tela do Formulário de Doação}
@@ -152,7 +152,7 @@ O projeto está organizado numa estrutura de Projeto Pai e Projetos Filhos do Ap
   \item \textbf{model}: Contém o modelo de dados do Ajuda.Ai, apresentado na Figura \ref{fig:uml_model};
   \item \textbf{persistence-sql}: Provê classes que implementam a persistência do projeto model em um banco de dados SQL através do JBoss Hibernate;
   \item \textbf{backend}: Servidor de Back-end do Ajuda.Ai. Aplica as regras de negócio, organiza pagamentos e atende requisições dos usuários;
-  \item \textbf{frontend}: Aplicação de Página Única do Front-end do Ajuda.Ai. Uma interface web simples e agradável para utilização do sistema;
+  \item \textbf{frontend}: Aplicação de Página Única do Front-end do Ajuda.Ai;
   \item \textbf{payment-api}: Projeto pai para as implementações de pagamentos dos diferentes \emph{Gateways} de pagamento;
   \item \textbf{payment-impl-moip}: Implementação de payment-api para o \emph{gateway} MoIP;
   \item \textbf{payment-impl-pagseguro}: Implementação de payment-api para o \emph{gateway} PagSeguro;
@@ -195,7 +195,7 @@ O modelo de dados da aplicação é apresentado na Figura \ref{fig:uml_model}, o
             }{}
 		\end{umlpackage}
         
-        \begin{umlpackage}[x=-1.5, y=-15]{ajuda{.}ai{.}model{.}billing}
+        \begin{umlpackage}[x=-1.5, y=-15.15]{ajuda{.}ai{.}model{.}billing}
         	\umlclass[x=0, y=0]{Payment}{
             	- id : Long \\
                 - uuid : String \\
@@ -245,7 +245,7 @@ O modelo de dados da aplicação é apresentado na Figura \ref{fig:uml_model}, o
             }{}
 		\end{umlpackage}
         
-        \begin{umlpackage}[x=-2.1, y=-6.5]{ajuda{.}ai{.}model{.}institution}
+        \begin{umlpackage}[x=-2.1, y=-6.45]{ajuda{.}ai{.}model{.}institution}
         	\umlclass[x=0, y=0]{Institution}{
             	- id : Long \\
 				- slug : String \\
@@ -266,12 +266,12 @@ O modelo de dados da aplicação é apresentado na Figura \ref{fig:uml_model}, o
         
         
         \umlinherit[very thick]{InstitutionPost}{Page}
-        \umlcompo[very thick]{CreationInfo}{User}
-        \umlcompo[anchor1=65, very thick]{Payment}{Institution}
-        \umlcompo[mult1=1, arg2=*, very thick]{Payment}{PaymentEvent}
-        \umluniassoc[anchor1=58, anchor2=-120, very thick]{Payment}{CreationInfo}
-      	\umluniassoc[very thick]{Institution}{CreationInfo}
-        \umluniassoc[very thick]{Page}{CreationInfo}
+        \umlcompo[arg1=*, arg2=1, very thick]{CreationInfo}{User}
+        \umlcompo[mult1=*, arg2=1, anchor1=65, very thick]{Payment}{Institution}
+        \umlcompo[arg1=1, arg2=*, very thick]{Payment}{PaymentEvent}
+        \umluniassoc[arg1=1, arg2=1, anchor1=58, anchor2=-120, very thick]{Payment}{CreationInfo}
+      	\umluniassoc[arg1=1, arg2=1, very thick]{Institution}{CreationInfo}
+        \umluniassoc[arg1=1, arg2=1, very thick]{Page}{CreationInfo}
   \end{tikzpicture}
   \legend{Fonte: Elaborado pelo Autor}
 \end{figure}
@@ -393,710 +393,14 @@ Cada mudança de estado resulta em uma chamada a URL configurada juntamente a um
 
 \section{API REST Web} \label{sec:ajudaai:api}
 
-%Você pode falar sobre a necessidade de se documentar a API, de forma a dirimir dúvidas de implementações que consumirem os serviços. Pode falar que não existe um padrão, mas que neste trabalho você usou o formato x, y, z e através dele é possível ter uma microvisão da coisa toda.
-
 Para facilitar o desenvolvimento de diferentes interfaces com o usuário e demais consumidores da API e prevenir dúvidas quanto a mesma e seu funcionamento a API REST Web do \emph{backend} do projeto Ajuda.Ai foi documentada. Esses são os métodos da API que estão disponíveis para todos os clientes, porém alguns necessitam de login. Os métodos que não necessitam de login são classificados como métodos públicos.
 
-Apesar da importância de uma boa documentação ainda não há um padrão estabelecido para a forma de documentar APIs REST Web. Por esse motivo este trabalho se utiliza do formato proposto por Irene Ros\cite{blog:bocoup}, diretora da Bocoup, empresa de consultoria referência em desenvolvimento REST Web e produtora de diversas ferramentas de código fonte aberto para se trabalhar com REST Web e \emph{Front-end}. A seguir está a API REST Web disponibilizada pelo Ajuda.Ai. Todos os parâmetros são obrigatórios, a menos que especificado que seja opcional. Parâmetros que fazem parte da própria URL são indicados com um sinal de dois-pontos no início de seu nome:
+Apesar da importância de uma boa documentação ainda não há um padrão estabelecido para a forma de documentar APIs REST Web. Por esse motivo este trabalho se utiliza do formato proposto por Irene Ros\cite{blog:bocoup}, diretora da Bocoup, empresa de consultoria referência em desenvolvimento REST Web e produtora de diversas ferramentas de código fonte aberto para se trabalhar com REST Web e \emph{Front-end}. No anexo \ref{anexo:a}, encontra-se documentada a API REST Web disponibilizada pelo Ajuda.Ai.
 
-\begin{caixa}{Autenticação do Usuário}{}
 
-Retorna informações sobre o usuário logado. Usado para, além de pegar informações sobre o usuário logado, manter a Sessão de autenticação ativa.
 
-\begin{itemize}
-\item \textbf{URL}
-	\begin{itemize}
-		\item \codigo{/auth/login}
-	\end{itemize}
 
-\item \textbf{Método}
-	\begin{itemize}
-		\item \codigo{POST}
-	\end{itemize}
 
-\item \textbf{Parâmetros}
-	\begin{itemize}
-    	\item Nenhum Parâmetro
-	\end{itemize}
-
-\item \textbf{Parâmetros de Dados}
-	\begin{itemize}
-        \item \codigo{username=String} Nome de usuário ou E-mail do Usuário que quer se autenticar
-        \item \codigo{password=String} Senha do Usuário
-	\end{itemize}
-
-\item \textbf{Resposta de Sucesso}
-	\begin{itemize}
-		\item \textbf{Código:} \codigo{200 OK} \\ \textbf{Conteúdo:} JSON de um objeto \codigo{User} apenas com os campos \codigo{id}, \codigo{username}, \codigo{email}, \codigo{firstname} e \codigo{lastname} do Usuário logado.
-	\end{itemize}
-
-\item \textbf{Resposta de Erro}
-	\begin{itemize}
-		\item \textbf{Código:} \codigo{200 OK} \\ \textbf{Conteúdo:} \codigo{Array} com os erros de autenticação \\ \textbf{Motivo:} Usuário ou senha incorretos.
-        \item \textbf{Código:} \codigo{405 METHOD NOT ALLOWED} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} A chamada HTTP não utilizou o método \codigo{POST}.
-	\end{itemize}
-
-\end{itemize}
-\end{caixa}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{caixa}{Dados do Usuário Logado}{}
-
-Retorna informações sobre o usuário logado. Usado para, além de pegar informações sobre o usuário logado, manter a Sessão de autenticação ativa. A sessão de autenticação dura por 30 minutos após a última requisição a API.
-
-\begin{itemize}
-\item \textbf{URL}
-	\begin{itemize}
-		\item \codigo{/profile/me}
-	\end{itemize}
-
-\item \textbf{Método}
-	\begin{itemize}
-		\item \codigo{GET}
-	\end{itemize}
-
-\item \textbf{Parâmetros}
-	\begin{itemize}
-		\item Nenhum Parâmetro
-	\end{itemize}
-
-\item \textbf{Parâmetros de Dados}
-	\begin{itemize}
-		\item Nenhum Parâmetro
-	\end{itemize}
-
-\item \textbf{Resposta de Sucesso}
-	\begin{itemize}
-		\item \textbf{Código:} \codigo{200 OK} \\ \textbf{Conteúdo:} JSON do objeto \codigo{User} do usuário logado, apenas com os campos \codigo{id}, \codigo{username}, \codigo{email}, \codigo{firstname} e \codigo{lastname}.
-	\end{itemize}
-
-\item \textbf{Resposta de Erro}
-	\begin{itemize}
-		\item \textbf{Código:} \codigo{401 UNAUTHORIZED} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} Não há um Usuário logado
-        \item \textbf{Código:} \codigo{405 METHOD NOT ALLOWED} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} A chamada HTTP não utilizou o método \codigo{GET}.
-	\end{itemize}
-
-\end{itemize}
-\end{caixa}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{caixa}{Dados de um Usuário}{}
-
-Retorna informações sobre o usuário especificado a partir de seu nome de usuário.
-
-\begin{itemize}
-\item \textbf{URL}
-	\begin{itemize}
-		\item \codigo{/profile/:username}
-	\end{itemize}
-
-\item \textbf{Método}
-	\begin{itemize}
-		\item \codigo{GET}
-	\end{itemize}
-
-\item \textbf{Parâmetros}
-	\begin{itemize}
-		\item \codigo{username=String} - \textbf{(opcional se \codigo{id} for especificado)} Nome único de usuário
-	\end{itemize}
-
-\item \textbf{Parâmetros de Dados}
-	\begin{itemize}
-		\item \codigo{id=Integer} - Identificador do usuário
-	\end{itemize}
-
-\item \textbf{Resposta de Sucesso}
-	\begin{itemize}
-		\item \textbf{Código:} \codigo{200 OK} \\ \textbf{Conteúdo:} JSON do objeto \codigo{User} do usuário encontrado, apenas com os campos \codigo{id}, \codigo{username}, \codigo{firstname} e \codigo{lastname}.
-	\end{itemize}
-
-\item \textbf{Resposta de Erro}
-	\begin{itemize}
-		\item \textbf{Código:} \codigo{404 NOT FOUND} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} Usuário não existe
-        \item \textbf{Código:} \codigo{405 METHOD NOT ALLOWED} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} A chamada HTTP não utilizou o método \codigo{GET}.
-	\end{itemize}
-
-\end{itemize}
-\end{caixa}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{caixa}{Dados de uma Instituição}{}
-
-Retorna todos os dados de uma Instituição.
-
-\begin{itemize}
-\item \textbf{URL}
-	\begin{itemize}
-		\item \codigo{/institution/:slug}
-	\end{itemize}
-
-\item \textbf{Método}
-	\begin{itemize}
-		\item \codigo{GET}
-	\end{itemize}
-
-\item \textbf{Parâmetros}
-	\begin{itemize}
-		\item \codigo{slug=String} - Nome da URL da Instituição
-	\end{itemize}
-
-\item \textbf{Parâmetros de Dados}
-	\begin{itemize}
-		\item Nenhum Parâmetro
-	\end{itemize}
-
-\item \textbf{Resposta de Sucesso}
-	\begin{itemize}
-		\item \textbf{Código:} \codigo{200 OK} \\ \textbf{Conteúdo:} JSON com os dados da Instituição
-	\end{itemize}
-
-\item \textbf{Resposta de Erro}
-	\begin{itemize}
-		\item \textbf{Código:} \codigo{404 NOT FOUND} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} Instituição não existe
-        \item \textbf{Código:} \codigo{405 METHOD NOT ALLOWED} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} A chamada HTTP não utilizou o método \codigo{GET}.
-	\end{itemize}
-
-\end{itemize}
-\end{caixa}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{caixa}{Dados de uma Instituição escolhida Aleatoriamente}{}
-
-Retorna todos os dados de uma Instituição escolhida aleatoriamente.
-
-\begin{itemize}
-\item \textbf{URL}
-	\begin{itemize}
-		\item \codigo{/institution/random}
-	\end{itemize}
-
-\item \textbf{Método}
-	\begin{itemize}
-		\item \codigo{GET}
-	\end{itemize}
-
-\item \textbf{Parâmetros}
-	\begin{itemize}
-		\item Nenhum Parâmetro
-	\end{itemize}
-
-\item \textbf{Parâmetros de Dados}
-	\begin{itemize}
-		\item Nenhum Parâmetro
-	\end{itemize}
-
-\item \textbf{Resposta de Sucesso}
-	\begin{itemize}
-		\item \textbf{Código:} \codigo{200 OK} \\ \textbf{Conteúdo:} JSON com os dados de uma Instituição
-	\end{itemize}
-
-\item \textbf{Resposta de Erro}
-	\begin{itemize}
-		\item \textbf{Código:} \codigo{404 NOT FOUND} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} Não há nenhuma instituição cadastrada no banco de dados
-        \item \textbf{Código:} \codigo{405 METHOD NOT ALLOWED} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} A chamada HTTP não utilizou o método \codigo{GET}.
-	\end{itemize}
-
-\end{itemize}
-\end{caixa}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{caixa}{Lista de Instituições escolhidas Aleatoriamente}{}
-
-Retorna uma lista de até 12 Instituições escolhidas aleatoriamente. Útil para exibir Instituições na Página Inicial.
-
-\begin{itemize}
-\item \textbf{URL}
-	\begin{itemize}
-		\item \codigo{/institution/random-list}
-	\end{itemize}
-
-\item \textbf{Método}
-	\begin{itemize}
-		\item \codigo{GET}
-	\end{itemize}
-
-\item \textbf{Parâmetros}
-	\begin{itemize}
-		\item Nenhum Parâmetro
-	\end{itemize}
-
-\item \textbf{Parâmetros de Dados}
-	\begin{itemize}
-		\item Nenhum Parâmetro
-	\end{itemize}
-
-\item \textbf{Resposta de Sucesso}
-	\begin{itemize}
-		\item \textbf{Código:} \codigo{200 OK} \\ \textbf{Conteúdo:} JSON com um \codigo{Array} com dados de Instituições escolhidas aleatoriamente. Máximo de 12 instituições.
-	\end{itemize}
-
-\item \textbf{Resposta de Erro}
-	\begin{itemize}
-		\item \textbf{Código:} \codigo{404 NOT FOUND} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} Não há nenhuma instituição cadastrada no banco de dados
-        \item \textbf{Código:} \codigo{405 METHOD NOT ALLOWED} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} A chamada HTTP não utilizou o método \codigo{GET}.
-	\end{itemize}
-
-\end{itemize}
-\end{caixa}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{caixa}{Estatísticas de Doações}{}
-
-Retorna quantas doações a Instituição recebeu e o valor total das mesmas.
-
-\begin{itemize}
-\item \textbf{URL}
-	\begin{itemize}
-		\item \codigo{/institution/:slug/donation-stats}
-	\end{itemize}
-
-\item \textbf{Método}
-	\begin{itemize}
-		\item \codigo{GET}
-	\end{itemize}
-
-\item \textbf{Parâmetros}
-	\begin{itemize}
-		\item \codigo{slug=String} - Nome da URL da Instituição
-	\end{itemize}
-
-\item \textbf{Parâmetros de Dados}
-	\begin{itemize}
-		\item Nenhum Parâmetro
-	\end{itemize}
-
-\item \textbf{Resposta de Sucesso}
-	\begin{itemize}
-		\item \textbf{Código:} \codigo{200 OK} \\ \textbf{Conteúdo:} JSON no seguinte formato: \\ \codigo{\{ count: Integer, value: Integer \}} - O valor deve ser dividido por 100 para ser exibido adequadamente.
-	\end{itemize}
-
-\item \textbf{Resposta de Erro}
-	\begin{itemize}
-		\item \textbf{Código:} \codigo{404 NOT FOUND} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} Instituição não existe
-        \item \textbf{Código:} \codigo{405 METHOD NOT ALLOWED} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} A chamada HTTP não utilizou o método \codigo{GET}.
-	\end{itemize}
-
-\end{itemize}
-\end{caixa}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{caixa}{Doação - Passo 01: Registrar o Pagamento}{}
-
-Inicia o processo de doação gravando os dados da mesma no Ajuda.Ai. Posteriormente o usuário deverá ser redirecionando para o \emph{gateway} de pagamento vinculado a Instituição através do método \codigo{/pagar/:id}.
-
-\begin{itemize}
-\item \textbf{URL}
-	\begin{itemize}
-		\item \codigo{/institution/:slug/doar}
-	\end{itemize}
-
-\item \textbf{Método}
-	\begin{itemize}
-		\item \codigo{POST}
-	\end{itemize}
-
-\item \textbf{Parâmetros}
-	\begin{itemize}
-		\item \codigo{slug=String} - Nome da URL da Instituição
-	\end{itemize}
-
-\item \textbf{Parâmetros de Dados}
-	\begin{itemize}
-        \item \codigo{value=Integer} - Valor da Doação como um Inteiro (10000 = \$100,00)
-        \item \codigo{name=String} - \textbf{(opcional se feito o login)} Nome Completo do Doador
-        \item \codigo{email=String} - \textbf{(opcional se feito o login)} E-mail do Doador
-        %\item \codigo{anonymous=Boolean} - Doação anônima?
-        \item \codigo{addcosts=Boolean} - Adicionar custos operacionais do Gateway ao valor da doação?
-        \item \codigo{addcoststype=Integer} - Tipo de pagamento que será utilizado (para cálculo do custo operacional)
-	\end{itemize}
-
-\item \textbf{Resposta de Sucesso}
-	\begin{itemize}
-		\item \textbf{Código:} \codigo{200 OK} \\ \textbf{Conteúdo:} Objeto \codigo{Payment} com os dados do pagamento criado
-	\end{itemize}
-
-\item \textbf{Resposta de Erro}
-	\begin{itemize}
-		\item \textbf{Código:} \codigo{404 NOT FOUND} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} Instituição não existe
-        \item \textbf{Código:} \codigo{405 METHOD NOT ALLOWED} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} A chamada HTTP não utilizou o método \codigo{POST}.
-	\end{itemize}
-
-\end{itemize}
-\end{caixa}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{caixa}{Doação - Passo 02: Redirecionamento ao \emph{Gateway}}{}
-
-Continua o processo de doação redirecionando o usuário para o \emph{gateway} de pagamento vinculado ao \codigo{Payment} especificado.
-
-\begin{itemize}
-\item \textbf{URL}
-	\begin{itemize}
-		\item \codigo{/pagar/:id}
-	\end{itemize}
-
-\item \textbf{Método}
-	\begin{itemize}
-		\item \codigo{GET}
-	\end{itemize}
-
-\item \textbf{Parâmetros}
-	\begin{itemize}
-		\item \codigo{id=UUID} - Identificador do pagamento (UUID)
-	\end{itemize}
-
-\item \textbf{Parâmetros de Dados}
-	\begin{itemize}
-        \item Nenhum Parâmetro
-	\end{itemize}
-
-\item \textbf{Resposta de Sucesso}
-	\begin{itemize}
-		\item \textbf{Código:} \codigo{302 MOVED TEMPORARILY} \\ \textbf{Conteúdo:} Nenhum
-	\end{itemize}
-
-\item \textbf{Resposta de Erro}
-	\begin{itemize}
-		\item \textbf{Código:} \codigo{404 NOT FOUND} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} Pagamento não existe
-        \item \textbf{Código:} \codigo{409 CONFLICT} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} Notificações do \emph{Gateway} informam que este pagamento já está ou já foi processado.
-        \item \textbf{Código:} \codigo{405 METHOD NOT ALLOWED} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} A chamada HTTP não utilizou o método \codigo{GET}.
-	\end{itemize}
-
-\end{itemize}
-\end{caixa}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{caixa}{\emph{Posts} de uma Instituição}{}
-
-Retorna uma lista de tamanho limitado com os \emph{posts} de uma Instituição.
-
-\begin{itemize}
-\item \textbf{URL}
-	\begin{itemize}
-		\item \codigo{/institution/:slug/posts}
-	\end{itemize}
-
-\item \textbf{Método}
-	\begin{itemize}
-		\item GET
-	\end{itemize}
-
-\item \textbf{Parâmetros}
-	\begin{itemize}
-		\item \codigo{slug=String} - Nome de URL da Instituição
-	\end{itemize}
-
-\item \textbf{Parâmetros de Dados}
-	\begin{itemize}
-		\item \codigo{size=Integer} - \textbf{(opcional)} Quantidade de Itens na lista. Padrão: \codigo{10}. Máximo: \codigo{50}.
-        \item \codigo{offset=Integer} - \textbf{(opcional)} Primeiro item da lista. Padrão: \codigo{0}.
-	\end{itemize}
-
-\item \textbf{Resposta de Sucesso}
-	\begin{itemize}
-		\item \textbf{Código:} \codigo{200 OK} \\ \textbf{Conteúdo:} JSON no seguinte formato: \\ \codigo{\{ size: Integer, total: Integer, offset: Integer, items: [InstitutionPost] \}} \\
-        Nota: os \emph{posts} terão apenas os campos id, slug, titulo, subtitulo, criador e data e hora de criação.
-	\end{itemize}
-
-\item \textbf{Resposta de Erro}
-	\begin{itemize}
-		\item \textbf{Código:} \codigo{404 NOT FOUND} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} Instituição não existe
-        \item \textbf{Código:} \codigo{405 METHOD NOT ALLOWED} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} A chamada HTTP não utilizou o método \codigo{GET}.
-	\end{itemize}
-
-\end{itemize}
-\end{caixa}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{caixa}{Post Único de uma Instituição}{}
-
-Retorna um único \emph{post} de uma Instituição.
-
-\begin{itemize}
-\item \textbf{URL}
-	\begin{itemize}
-		\item \codigo{/institution/:slug/:post-slug}
-	\end{itemize}
-
-\item \textbf{Método}
-	\begin{itemize}
-		\item \codigo{GET}
-	\end{itemize}
-
-\item \textbf{Parâmetros}
-	\begin{itemize}
-		\item \codigo{slug=String} - Nome da URL da Instituição
-        \item \codigo{post-slug=String} - Nome da URL específico do \emph{post} da Instituição
-	\end{itemize}
-
-\item \textbf{Parâmetros de Dados}
-	\begin{itemize}
-		\item Nenhum Parâmetro
-	\end{itemize}
-
-\item \textbf{Resposta de Sucesso}
-	\begin{itemize}
-		\item \textbf{Código:} \codigo{200 OK} \\ \textbf{Conteúdo:} JSON com os dados do \emph{post} da Instituição
-	\end{itemize}
-
-\item \textbf{Resposta de Erro}
-	\begin{itemize}
-		\item \textbf{Código:} \codigo{404 NOT FOUND} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} Instituição ou \emph{Post} não existem
-        \item \textbf{Código:} \codigo{405 METHOD NOT ALLOWED} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} A chamada HTTP não utilizou o método \codigo{GET}.
-	\end{itemize}
-
-\end{itemize}
-\end{caixa}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{caixa}{Dados sobre Doações do Usuário Logado}{}
-
-Retorna algumas informações sobre as doações feitas pelo usuário logado.
-
-\textbf{* Este método requer quer o usuário tenha feito login.}
-
-\begin{itemize}
-\item \textbf{URL}
-	\begin{itemize}
-		\item \codigo{/profile/dashboard-data}
-	\end{itemize}
-
-\item \textbf{Método}
-	\begin{itemize}
-		\item \codigo{GET}
-	\end{itemize}
-
-\item \textbf{Parâmetros}
-	\begin{itemize}
-        \item Nenhum Parâmetro
-	\end{itemize}
-
-\item \textbf{Parâmetros de Dados}
-	\begin{itemize}
-		\item Nenhum Parâmetro
-	\end{itemize}
-
-\item \textbf{Resposta de Sucesso}
-	\begin{itemize}
-		\item \textbf{Código:} \codigo{200 OK} \\ \textbf{Conteúdo:} JSON no seguinte formato: \codigo{\{ donations: Integer, institutions: Integer, value: Integer, meanValue: Integer, posts: [InstitutionPost], payments: [Payment] \}}
-        \item \textbf{Descrição dos campos:}
-          \begin{itemize}
-	        \item \codigo{donations}: Quantidade de doações feitas pelo usuário;
-            \item \codigo{institutions}: Quantidade de instituições únicas contempladas pelas doações;
-            \item \codigo{value}: Somatório dos valores das doações;
-            \item \codigo{meanValue}: Média dos valores das doações;
-            \item \codigo{posts}: Entre 0 e 10 dos \emph{posts} mais recentes das instituições contempladas pelas doações (``Últimas Notícias'');
-            \item \codigo{payments}: Entre 0 e 10 das últimas doações feitas pelo usuário.
-          \end{itemize}
-	\end{itemize}
-
-\item \textbf{Resposta de Erro}
-	\begin{itemize}
-		\item \textbf{Código:} \codigo{401 UNAUTHORIZED} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} Não há um Usuário logado
-	\end{itemize}
-
-\end{itemize}
-\end{caixa}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{caixa}{Alterar Informações do usuário Logado}{}
-
-Altera informações do usuário logado como nome, e-mail, senha, etc.
-
-\textbf{* Este método requer quer o usuário tenha feito login.}
-
-\begin{itemize}
-\item \textbf{URL}
-	\begin{itemize}
-		\item \codigo{/profile/save}
-	\end{itemize}
-
-\item \textbf{Método}
-	\begin{itemize}
-		\item \codigo{POST}
-	\end{itemize}
-
-\item \textbf{Parâmetros}
-	\begin{itemize}
-        \item Nenhum Parâmetro
-	\end{itemize}
-
-\item \textbf{Parâmetros de Dados}
-	\begin{itemize}
-		\item Nenhum Parâmetro
-	\end{itemize}
-
-\item \textbf{Resposta de Sucesso}
-	\begin{itemize}
-		\item \textbf{Código:} \codigo{200 OK} \\ \textbf{Conteúdo:} JSON do objeto \codigo{User} que foi alterado, apenas com os campos \codigo{id}, \codigo{username}, \codigo{email}, \codigo{firstname}, \codigo{lastname}.
-	\end{itemize}
-
-\item \textbf{Resposta de Erro}
-	\begin{itemize}
-		\item \textbf{Código:} \codigo{401 UNAUTHORIZED} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} Não há um Usuário logado
-        \item \textbf{Código:} \codigo{405 METHOD NOT ALLOWED} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} A chamada HTTP não utilizou o método \codigo{POST}.
-	\end{itemize}
-
-\end{itemize}
-\end{caixa}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{caixa}{Dados sobre as Instituições pertencentes ao Usuário}{}
-
-Retorna algumas informações sobre as doações feitas a todas as Instituições pertencentes ao usuário logado.
-
-\textbf{* Este método requer quer o usuário tenha feito login.}
-
-\begin{itemize}
-\item \textbf{URL}
-	\begin{itemize}
-		\item \codigo{/institution/dashboard-data}
-	\end{itemize}
-
-\item \textbf{Método}
-	\begin{itemize}
-		\item \codigo{GET}
-	\end{itemize}
-
-\item \textbf{Parâmetros}
-	\begin{itemize}
-        \item Nenhum Parâmetro
-	\end{itemize}
-
-\item \textbf{Parâmetros de Dados}
-	\begin{itemize}
-		\item Nenhum Parâmetro
-	\end{itemize}
-
-\item \textbf{Resposta de Sucesso}
-	\begin{itemize}
-		\item \textbf{Código:} \codigo{200 OK} \\ \textbf{Conteúdo:} JSON no seguinte formato: \codigo{\{ donations: Integer, value: Integer, helpers: Integer, maxValue: Integer, meanValue: Integer, institutionCount: Integer, institutions: [Institution] \}}
-        \item \textbf{Descrição dos campos:}
-          \begin{itemize}
-	        \item \codigo{donations}: Quantidade de doações feitas às Instituições;
-            \item \codigo{value}: Somatório dos valores das doações;
-            \item \codigo{helpers}: Quantidade de usuários únicos que fizeram doações às Instituições;
-            \item \codigo{maxValue}: Maior valor doado;
-            \item \codigo{meanValue}: Média dos valores das doações;
-            \item \codigo{institutionCount}: Quantas Instituições pertencem ao usuário;
-            \item \codigo{institutions}: Entre 0 e 50 Instituições pertencentes ao usuário.
-          \end{itemize}
-	\end{itemize}
-
-\item \textbf{Resposta de Erro}
-	\begin{itemize}
-		\item \textbf{Código:} \codigo{401 UNAUTHORIZED} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} Não há um Usuário logado
-	\end{itemize}
-
-\end{itemize}
-\end{caixa}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{caixa}{Altera dados de uma Instituição pertencente ao Usuário}{}
-
-Altera informações sobre uma Instituição pertencente ao Usuário.
-
-\textbf{* Este método requer quer o usuário tenha feito login.}
-
-\begin{itemize}
-\item \textbf{URL}
-	\begin{itemize}
-		\item \codigo{/institution/save}
-	\end{itemize}
-
-\item \textbf{Método}
-	\begin{itemize}
-		\item \codigo{POST}
-	\end{itemize}
-
-\item \textbf{Parâmetros}
-	\begin{itemize}
-        \item Nenhum Parâmetro
-	\end{itemize}
-
-\item \textbf{Parâmetros de Dados}
-	\begin{itemize}
-		\item JSON de um objeto \codigo{Institution}
-	\end{itemize}
-
-\item \textbf{Resposta de Sucesso}
-	\begin{itemize}
-		\item \textbf{Código:} \codigo{200 OK} \\ \textbf{Conteúdo:} JSON do objeto \codigo{Institution} após ser alterado na persistência de dados.
-	\end{itemize}
-
-\item \textbf{Resposta de Erro}
-	\begin{itemize}
-    	\item \textbf{Código:} \codigo{200 OK} \\ \textbf{Conteúdo:} \codigo{Array} com erros de validação \\ \textbf{Motivo:} Um ou mais campos falhou na validação de dados.
-		\item \textbf{Código:} \codigo{401 UNAUTHORIZED} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} Não há um Usuário logado
-        \item \textbf{Código:} \codigo{405 METHOD NOT ALLOWED} \\ \textbf{Conteúdo:} Nenhum \\ \textbf{Motivo:} A chamada HTTP não utilizou o método \codigo{POST}.
-	\end{itemize}
-
-\end{itemize}
-\end{caixa}
-
-
-
-
-
-
-
-\pagebreak
 \section*{Resumo} \label{sec:ajudaai:resumo}
 Neste capítulo foi apresentada a solução Ajuda.Ai para \emph{crowdfunding} social, seu funcionamento, tecnologias utilizadas e arquitetura do sistema. Ao final, a API REST Web foi documentada.
 
