@@ -25,13 +25,12 @@
 
 
 %% 02: Folha de Rosto
-%% OBS: O asterisco indica que haverá ficha bibliográfica
+%% OBS: O asterisco indica que haverá ficha bibliográfica (só funciona para impressão frente-e-verso)
 \imprimirfolhaderosto*
 
 
 
 %% Ficha Catalográfica (acho que é melhor adicionar via \includepdf depois)
-%% Se você mesmo fizer: \input{este-trabalho/ficha-catalografica}
 %% Se for incluir um outro PDF neste documento: \includepdf{pasta-onde-está-a-ficha/ficha-catalografica.pdf}
 
 
@@ -42,6 +41,7 @@
 
 %% 04: Folha de Aprovação
 \imprimirfolhadeaprovacao
+%% Use esta se forem 4 membros na banca:
 %\imprimirfolhadeaprovacaoduascolunas
 
 
@@ -69,7 +69,7 @@
 
 
 
-%% 10: Lista de Ilustrações (o asterisco tira a lista do sumário)
+%% 10: Lista de Ilustrações
 \input{pre-textual/lista-de-ilustracoes}
 
 
