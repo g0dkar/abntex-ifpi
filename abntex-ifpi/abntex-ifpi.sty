@@ -87,6 +87,7 @@
 \newcommand{\membrodoisname}{Segundo membro}
 \newcommand{\membrotresname}{Terceiro membro}
 \newcommand{\dataapresentacaoname}{01 de Janeiro de 1970}
+\newcommand{\nomedocursoname}{Nome do Curso}
 
 % Comandos de dados - Membro da banca um
 \providecommand{\imprimirmembroumRotulo}{}
@@ -110,9 +111,16 @@
    \renewcommand{\imprimirmembrotres}{#2}}
 
 % Comandos de dados - Data da apresentação
-\providecommand{\imprimirdataapresentacao}{}
+\providecommand{\imprimirdataapresentacaoRotulo}{}
 \providecommand{\imprimirdataapresentacao}{}
 \newcommand{\dataapresentacao}[2][\dataapresentacaoname]{\renewcommand{\dataapresentacao}{#2}}
+
+% Comandos de dados - Nome do Curso
+\providecommand{\imprimirnomedocursoRotulo}{}
+\providecommand{\imprimirnomedocurso}{}
+\newcommand{\nomedocurso}[2][\nomedocursoname]
+  {\renewcommand{\imprimirnomedocursoRotulo}{#1}
+   \renewcommand{\imprimirnomedocurso}{#2}}
 
 % ----------------------------------------------------------
 % Alterações da Capa (inclusão do Brasão)
