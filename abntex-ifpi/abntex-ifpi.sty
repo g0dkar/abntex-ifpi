@@ -296,3 +296,17 @@
 
 \end{folhadeaprovacao}
 }
+
+% -----
+% Declaracoes de cabecalhos: Corrigidos para o estilo pedido pela Biblioteca do IFPI em 2024
+% -----
+% Cabecalho padrao
+\makepagestyle{abntheadings}
+\makeevenhead{abntheadings}{\ABNTEXfontereduzida\thepage}{}{\ABNTEXfontereduzida}
+\makeoddhead{abntheadings}{}{}{\ABNTEXfontereduzida\thepage}
+% \makeheadrule{abntheadings}{\textwidth}{\normalrulethickness} <-- Descomente essa linha para colocar um traço entre o número da página e o conteúdo da página
+
+% Cabecalho do inicio do capitulo
+\makepagestyle{abntchapfirst}
+\makeoddhead{abntchapfirst}{}{}{\ABNTEXfontereduzida\thepage}
+% ---
